@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>투자 기준 | AI 골드 러쉬 파트너스</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom Styles (Optional) */
+        .page-header-bg {
+             /* TODO: Replace with a relevant background image */
+            background-image: url('https://images.unsplash.com/photo-1618044733300-9472054094ee?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Dark Greenish */
+            background-position: center;
+        }
+        /* Style for criteria list items */
+        .criteria-item {
+            @apply flex items-start py-2;
+        }
+        .criteria-icon {
+            @apply fas fa-check-circle text-brand-blue mt-1 mr-3 flex-shrink-0;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#1e40af', // Example primary blue
+                        'brand-blue-dark': '#1e3a8a',
+                        'brand-secondary': '#f59e0b', // Example accent color (optional)
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- Header / Navigation (동일하게 유지, 현재 페이지 강조) -->
+    <header class="bg-white shadow-md sticky top-0 z-50 w-full">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="text-2xl font-bold text-brand-blue hover:text-brand-blue-dark">
+                AI Gold Rush Partners
+            </a>
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-5 xl:space-x-7">
+                <a href="index.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">홈</a>
+                <a href="about.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">프로그램 소개</a>
+                <a href="financing.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">투자 구조</a>
+                <a href="partnership.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">파트너십</a>
+                <a href="criteria.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-brand-blue">투자 기준</a> 
+                <a href="cases.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">성공 사례</a>
+                <a href="apply.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">신청하기</a>
+                <a href="members.html" class="ml-4 px-5 py-2 rounded-md bg-brand-blue text-white font-semibold hover:bg-brand-blue-dark transition duration-300">회원사 전용</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="lg:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 hover:text-brand-blue focus:outline-none">
+                    <svg class="w-7 h-7" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu (동일하게 유지) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white py-3 absolute w-full shadow-lg">
+            <a href="index.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">홈</a>
+            <a href="about.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">프로그램 소개</a>
+            <a href="financing.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">투자 구조</a>
+            <a href="partnership.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">파트너십</a>
+            <a href="criteria.html" class="block px-6 py-2 text-gray-700 bg-gray-100 text-brand-blue font-medium">투자 기준</a> 
+            <a href="cases.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">성공 사례</a>
+            <a href="apply.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">신청하기</a>
+            <a href="members.html" class="block px-6 py-3 mt-2 text-center bg-brand-blue text-white font-semibold rounded mx-4 hover:bg-brand-blue-dark transition duration-300">회원사 전용</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header-bg bg-cover bg-center py-20 md:py-32 text-white relative">
+            <div class="absolute inset-0 bg-black opacity-60"></div>
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold">투자 기준</h1>
+                <p class="mt-4 text-lg md:text-xl text-gray-200">성공 가능성 높은 AI 기업을 선별하는 명확한 기준</p>
+            </div>
+        </section>
+
+        <!-- 1. Eligibility by Funding Type Section -->
+        <section id="eligibility-criteria" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">금융 지원 유형별 자격 요건</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">각 금융 지원 방식의 특성에 맞는 핵심 자격 요건을 충족해야 합니다.</p>
+                </div>
+                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Equity Investment Criteria -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 h-full flex flex-col">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-chart-pie text-2xl text-brand-blue mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">투자 (Equity)</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-700 flex-grow">
+                            <li class="criteria-item"><i class="criteria-icon"></i> 비즈니스 모델의 확장성 및 혁신성</li>
+                            <li class="criteria-item"><i class="criteria-icon"></i> 명확한 목표 시장 및 경쟁 우위</li>
+                            <li class="criteria-item"><i class="criteria-icon"></i> 합리적인 투자 수익률(ROI) 전망</li>
+                            <li class="criteria-item"><i class="criteria-icon"></i> 시장 검증 지표 (매출, 사용자 수 등 초기 성과)</li>
+                            <li class="criteria-item"><i class="criteria-icon"></i> 후속 투자 유치 가능성 및 계획</li>
+                        </ul>
+                    </div>
+                    <!-- Loan Criteria -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 h-full flex flex-col">
+                         <div class="flex items-center mb-4">
+                            <i class="fas fa-comments-dollar text-2xl text-green-600 mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">대출 (Loan)</h3>
+                        </div>
+                         <ul class="space-y-2 text-sm text-gray-700 flex-grow">
+                            <li class="criteria-item"><i class="criteria-icon"></i> 기술 담보 가치 평가 (IP, 기술력 등)</li>
+                            <li class="criteria-item"><i class="criteria-icon"></i> 안정적인 현금 흐름 및 상환 능력</li>
+                            <li class="criteria-item"><i class="criteria-icon"></i> 적정 수준의 신용 평가 등급</li>
+                            <li class="criteria-item"><i class="criteria-icon"></i> 명확한 대출 자금 사용 계획</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 기술 개발 단계 (프로젝트 파이낸싱의 경우)</li>
+                        </ul>
+                    </div>
+                    <!-- M&A Support Criteria -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 h-full flex flex-col">
+                         <div class="flex items-center mb-4">
+                            <i class="fas fa-handshake text-2xl text-purple-600 mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">M&A 지원</h3>
+                        </div>
+                         <ul class="space-y-2 text-sm text-gray-700 flex-grow">
+                             <li class="criteria-item"><i class="criteria-icon"></i> 인수/합병의 전략적 타당성 및 시너지 효과</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 인수 대상 기업의 가치 및 성장 잠재력</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 인수 후 통합(PMI) 계획의 구체성</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> (매각 지원 시) 기업 가치 및 매각 준비도</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> M&A 거래 구조의 합리성 및 실현 가능성</li>
+                        </ul>
+                    </div>
+                     <!-- IPO Support Criteria -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 h-full flex flex-col">
+                         <div class="flex items-center mb-4">
+                            <i class="fas fa-landmark text-2xl text-yellow-600 mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">상장(IPO) 지원</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-700 flex-grow">
+                             <li class="criteria-item"><i class="criteria-icon"></i> 상장 요건 충족 수준 (매출, 이익, 시가총액 등)</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 재무 건전성 및 내부 통제 시스템 구축 수준</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 투명한 지배구조 및 경영 안정성</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 지속 가능한 성장성 및 시장 경쟁력</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 상장 시기 및 시장 상황의 적절성</li>
+                        </ul>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- 2. Detailed Investment Sectors Section -->
+        <section id="investment-sectors" class="py-16 md:py-24 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">주요 투자 분야 상세</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">미래 성장 가능성이 높은 핵심 기술 분야에 집중 투자합니다.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- AI Technology Details -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-brain text-2xl text-brand-blue mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">인공지능 (AI)</h3>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                            <li>생성형 AI (LLM, 이미지/음성 생성 등)</li>
+                            <li>인지/분석 AI (자연어 처리, 컴퓨터 비전, 데이터 분석)</li>
+                            <li>로봇/자율주행 AI (강화학습, 경로 계획 등)</li>
+                            <li>엣지 AI (경량화 모델, 온디바이스 AI)</li>
+                            <li>AI 기반 산업별 솔루션 (헬스케어, 금융, 제조 등)</li>
+                        </ul>
+                    </div>
+                     <!-- Semiconductor Details -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <div class="flex items-center mb-4">
+                             <i class="fas fa-microchip text-2xl text-brand-blue mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">반도체</h3>
+                        </div>
+                         <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                             <li>AI 반도체 (NPU, GPU 가속기, PIM 등)</li>
+                             <li>시스템 반도체 (SoC, MCU, ASIC/FPGA 설계)</li>
+                             <li>지능형 센서 및 관련 하드웨어</li>
+                             <li>첨단 패키징 및 후공정 기술</li>
+                             <li>차세대 메모리 기술</li>
+                        </ul>
+                    </div>
+                     <!-- Robotics Details -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <div class="flex items-center mb-4">
+                             <i class="fas fa-robot text-2xl text-brand-blue mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">로봇</h3>
+                        </div>
+                         <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                             <li>지능형 산업용 로봇 (협동로봇, 물류로봇 등)</li>
+                             <li>전문 서비스 로봇 (의료, 방역, 서빙, 안내 등)</li>
+                             <li>개인 서비스 로봇 (가사, 교육, 엔터테인먼트)</li>
+                             <li>자율주행 시스템 (모빌리티, 드론 등)</li>
+                             <li>로봇 부품 및 핵심 기술 (센서, 액추에이터, 제어)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Evaluation Criteria Section (Tech, Business, Team) -->
+        <section id="evaluation-criteria" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">종합 평가 기준</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">기술력, 사업성, 팀 역량 등 다각적인 측면에서 기업의 잠재력을 종합적으로 평가합니다.</p>
+                </div>
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                     <!-- Technology Evaluation -->
+                     <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                         <div class="flex items-center mb-4">
+                              <i class="fas fa-cogs text-2xl text-brand-blue mr-3"></i>
+                             <h3 class="text-xl font-semibold text-gray-800">기술 평가</h3>
+                         </div>
+                         <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="criteria-item"><i class="criteria-icon"></i> 기술 완성도 (TRL: Technology Readiness Level)</li>
+                            <li class="criteria-item"><i class="criteria-icon"></i> 핵심 기술의 차별성 및 경쟁 우위</li>
+                            <li class="criteria-item"><i class="criteria-icon"></i> 기술 확장성 및 적용 가능성</li>
+                            <li class="criteria-item"><i class="criteria-icon"></i> 지식재산권 (특허 등) 확보 및 관리 현황</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 지속적인 R&D 역량 및 로드맵</li>
+                         </ul>
+                     </div>
+                     <!-- Business Evaluation -->
+                     <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                         <div class="flex items-center mb-4">
+                             <i class="fas fa-chart-line text-2xl text-brand-blue mr-3"></i>
+                             <h3 class="text-xl font-semibold text-gray-800">비즈니스 평가</h3>
+                         </div>
+                         <ul class="space-y-2 text-sm text-gray-700">
+                             <li class="criteria-item"><i class="criteria-icon"></i> 목표 시장 규모 및 성장 잠재력</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 비즈니스 모델의 명확성 및 수익성 검증</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 경쟁 환경 분석 및 차별화 전략</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 고객 확보 및 유지 전략 (Sales & Marketing)</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 현실적인 재무 계획 및 성장 전망</li>
+                         </ul>
+                     </div>
+                      <!-- Team Evaluation -->
+                     <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                         <div class="flex items-center mb-4">
+                             <i class="fas fa-users text-2xl text-brand-blue mr-3"></i>
+                             <h3 class="text-xl font-semibold text-gray-800">팀 평가</h3>
+                         </div>
+                         <ul class="space-y-2 text-sm text-gray-700">
+                             <li class="criteria-item"><i class="criteria-icon"></i> 창업팀(경영진)의 역량, 경험, 리더십</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 핵심 인력 구성 및 전문성 (기술, 사업 등)</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 팀워크 및 조직 문화</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 문제 해결 능력 및 실행력</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 명확한 비전 공유 및 성장 의지</li>
+                         </ul>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- 4. Association Recommendation Criteria Section -->
+        <section id="association-criteria" class="py-16 md:py-24 bg-gray-100">
+             <div class="container mx-auto px-6">
+                 <div class="max-w-3xl mx-auto text-center">
+                     <h2 class="text-3xl font-bold text-gray-900 mb-6">한국인공지능협회 추천 기준</h2>
+                     <div class="bg-blue-50 p-8 rounded-lg shadow border border-blue-200 text-left">
+                          <div class="flex items-center mb-5 justify-center">
+                             <i class="fas fa-certificate text-3xl text-brand-blue mr-3"></i>
+                             <h3 class="text-xl font-semibold text-gray-800">협회 추천 자격 요건</h3>
+                         </div>
+                         <p class="text-center text-gray-600 mb-6 text-sm">협회의 공식 추천은 AI 골드 러쉬 파트너스 투자 프로세스의 중요한 첫 단계입니다.</p>
+                          <ul class="space-y-3 text-sm text-gray-700">
+                             <li class="criteria-item"><i class="criteria-icon"></i> 한국인공지능협회 정회원사 자격 유지</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 협회 활동 참여도 및 기여도</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 협회 기술위원회 또는 전문가 그룹의 기술성 평가 통과</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 윤리 강령 준수 및 사회적 책임 의식</li>
+                             <li class="criteria-item"><i class="criteria-icon"></i> 협회장 추천서 발급 심의 기준 충족</li>
+                         </ul>
+                         <p class="text-xs text-gray-500 mt-4 text-center">* 상세 기준 및 절차는 협회 내규에 따릅니다. <a href="#contact-koraia" class="text-brand-blue hover:underline">협회 문의하기</a></p>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (동일하게 유지) -->
+   <footer class="bg-gray-800 text-gray-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                 <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">AI Gold Rush Partners</h4>
+                    <p class="text-sm">한국인공지능협회와 피앤에프글로벌이 함께하는 AI 기업 전문 투자 파트너입니다.</p>
+                    <div class="mt-4 space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">바로가기</h4>
+                    <ul class="space-y-2 text-sm">
+                         <li><a href="about.html" class="hover:text-white">프로그램 소개</a></li>
+                         <li><a href="criteria.html" class="hover:text-white">투자 구조</a></li>
+                         <li><a href="partnership.html" class="hover:text-white">파트너십</a></li>
+                         <li><a href="criteria.html" class="hover:text-white">투자 기준</a></li>
+                         <li><a href="#cases" class="hover:text-white">성공 사례</a></li>
+                         <li><a href="#apply" class="hover:text-white">투자 신청</a></li>
+                         <li><a href="members.html" class="hover:text-white">회원사 전용</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">연락처</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> 서울특별시 강남구 테헤란로 </li>
+                        <li><i class="fas fa-phone-alt mr-2"></i> (02) 123-4567 </li>
+                        <li><i class="fas fa-envelope mr-2"></i> contact@aigoldrush.kr </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm">
+                 <p>© 2024 AI Gold Rush Partners (Korea AI Association & P&F Global). All Rights Reserved.</p>
+                 <div class="mt-2 space-x-4">
+                     <a href="privacy.html" class="hover:text-white">개인정보처리방침</a>
+                     <a href="terms.html" class="hover:text-white">이용약관</a>
+                 </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script (동일하게 유지) -->
+    <script>
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                 mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>

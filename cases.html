@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성공 사례 | AI 골드 러쉬 파트너스</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom Styles (Optional) */
+        .page-header-bg {
+             /* TODO: Replace with a relevant background image */
+            background-image: url('https://images.unsplash.com/photo-1634097537825-b446635b2f7f?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Accent Color */
+            background-position: center;
+        }
+        .interview-quote::before {
+            content: '\f10d'; /* Font Awesome quote-left */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 1.5rem; /* Adjust size */
+            color: #d1d5db; /* gray-300 */
+            margin-right: 0.5rem;
+            vertical-align: top;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#1e40af', // Example primary blue
+                        'brand-blue-dark': '#1e3a8a',
+                        'brand-secondary': '#f59e0b', // Example accent color (optional)
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- Header / Navigation (동일하게 유지, 현재 페이지 강조) -->
+    <header class="bg-white shadow-md sticky top-0 z-50 w-full">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="text-2xl font-bold text-brand-blue hover:text-brand-blue-dark">
+                AI Gold Rush Partners
+            </a>
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-5 xl:space-x-7">
+                <a href="index.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">홈</a>
+                <a href="about.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">프로그램 소개</a>
+                <a href="criteria.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">투자 구조</a>
+                <a href="partnership.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">파트너십</a>
+                <a href="criteria.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">투자 기준</a>
+                <a href="cases.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-brand-blue">성공 사례</a> 
+                <a href="apply.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">신청하기</a>
+                <a href="members.html" class="ml-4 px-5 py-2 rounded-md bg-brand-blue text-white font-semibold hover:bg-brand-blue-dark transition duration-300">회원사 전용</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="lg:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 hover:text-brand-blue focus:outline-none">
+                    <svg class="w-7 h-7" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu (동일하게 유지) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white py-3 absolute w-full shadow-lg">
+            <a href="index.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">홈</a>
+            <a href="about.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">프로그램 소개</a>
+            <a href="criteria.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">투자 구조</a>
+            <a href="partnership.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">파트너십</a>
+            <a href="criteria.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">투자 기준</a>
+            <a href="cases.html" class="block px-6 py-2 text-gray-700 bg-gray-100 text-brand-blue font-medium">성공 사례</a>
+            <a href="apply.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">신청하기</a>
+            <a href="members.html" class="block px-6 py-3 mt-2 text-center bg-brand-blue text-white font-semibold rounded mx-4 hover:bg-brand-blue-dark transition duration-300">회원사 전용</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header-bg bg-cover bg-center py-20 md:py-32 text-white relative">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold">성공 사례</h1>
+                <p class="mt-4 text-lg md:text-xl text-gray-200">AI 골드 러쉬 파트너스와 함께 성장한 기업들의 이야기</p>
+            </div>
+        </section>
+
+        <!-- 1. Success Stories by Funding Type Section -->
+        <section id="stories-by-type" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">금융 지원 유형별 성공 스토리</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">맞춤형 금융 지원을 통해 혁신적인 성과를 달성한 사례들을 소개합니다.</p>
+                </div>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Investment Success Story Example -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 flex flex-col h-full">
+                        <div class="flex items-center mb-4">
+                             <i class="fas fa-chart-pie text-2xl text-brand-blue mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">투자 성공 사례</h3>
+                        </div>
+                        <div class="flex-grow space-y-3 text-sm text-gray-700 mb-4">
+                            <p><strong class="text-gray-900">시드 투자:</strong> [A사]는 초기 아이디어 단계에서 투자를 받아 핵심 AI 알고리즘 개발 및 고도화에 성공했습니다.</p>
+                            <p><strong class="text-gray-900">성장 단계 투자:</strong> [B사]는 시리즈 A 투자를 통해 성공적으로 북미 시장에 진출, 현지 법인을 설립하고 매출을 3배 이상 증대시켰습니다.</p>
+                             <p><strong class="text-gray-900">확장 단계 투자:</strong> [C사]는 대규모 후속 투자를 유치하여 글로벌 Top 5 AI 솔루션 기업으로 성장, IPO를 준비 중입니다.</p>
+                        </div>
+                        <a href="#case-study-investment" class="text-brand-blue hover:text-brand-blue-dark font-medium text-sm self-start group">
+                            투자 사례 더보기 <i class="fas fa-arrow-right ml-1 transition-transform duration-200 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                    <!-- Loan Success Story Example -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 flex flex-col h-full">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-comments-dollar text-2xl text-green-600 mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">대출 지원 성공 사례</h3>
+                        </div>
+                         <div class="flex-grow space-y-3 text-sm text-gray-700 mb-4">
+                            <p><strong class="text-gray-900">기술 담보 대출:</strong> [D사]는 보유한 AI 특허 기술을 기반으로 대출을 받아 R&D 인력을 2배 확충하고 차세대 제품 개발을 가속화했습니다.</p>
+                            <p><strong class="text-gray-900">운영 자금 대출:</strong> [E사]는 단기 운영 자금 대출을 통해 공격적인 마케팅 캠페인을 집행, 시장 점유율을 20% 상승시켰습니다.</p>
+                            <p><strong class="text-gray-900">프로젝트 파이낸싱:</strong> [F사]는 대규모 정부 과제 수주 후 프로젝트 파이낸싱 지원을 받아 성공적으로 과제를 완료하고 후속 계약을 체결했습니다.</p>
+                        </div>
+                         <a href="#case-study-loan" class="text-brand-blue hover:text-brand-blue-dark font-medium text-sm self-start group">
+                            대출 사례 더보기 <i class="fas fa-arrow-right ml-1 transition-transform duration-200 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                    <!-- M&A Success Story Example -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 flex flex-col h-full">
+                         <div class="flex items-center mb-4">
+                             <i class="fas fa-handshake text-2xl text-purple-600 mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">M&A 지원 성공 사례</h3>
+                        </div>
+                         <div class="flex-grow space-y-3 text-sm text-gray-700 mb-4">
+                            <p><strong class="text-gray-900">전략적 인수:</strong> [G사]는 M&A 자금 지원을 받아 경쟁력 있는 기술을 보유한 스타트업을 인수, 단기간에 AI 기술 포트폴리오를 확장했습니다.</p>
+                            <p><strong class="text-gray-900">가치 실현 매각:</strong> [H사]는 전략적 매각 지원을 통해 글로벌 대기업에 성공적으로 매각되어 창업자와 투자자 모두 높은 수익을 실현했습니다.</p>
+                             <p><strong class="text-gray-900">크로스보더 M&A:</strong> [I사]는 해외 AI 기업과의 복잡한 인수합병 과정을 성공적으로 완료하여 글로벌 시장에서의 입지를 강화했습니다.</p>
+                        </div>
+                         <a href="#case-study-ma" class="text-brand-blue hover:text-brand-blue-dark font-medium text-sm self-start group">
+                            M&A 사례 더보기 <i class="fas fa-arrow-right ml-1 transition-transform duration-200 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                    <!-- IPO Success Story Example -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 flex flex-col h-full">
+                         <div class="flex items-center mb-4">
+                            <i class="fas fa-landmark text-2xl text-yellow-600 mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">상장 지원 성공 사례</h3>
+                        </div>
+                         <div class="flex-grow space-y-3 text-sm text-gray-700 mb-4">
+                            <p><strong class="text-gray-900">코스닥 상장:</strong> [J사]는 Pre-IPO 컨설팅 및 상장 비용 지원을 통해 성공적으로 코스닥 시장에 상장하여 대규모 성장 자금을 확보했습니다.</p>
+                             <p><strong class="text-gray-900">기술특례 상장:</strong> [K사]는 혁신적인 AI 기술력을 인정받아 기술특례 상장 제도를 통해 코스닥 시장에 성공적으로 진입했습니다.</p>
+                             <p><strong class="text-gray-900">해외 증시 상장:</strong> [L사]는 나스닥 상장 지원 프로그램을 통해 글로벌 투자자들에게 기업 가치를 인정받고 성공적으로 해외 증시에 상장했습니다.</p>
+                        </div>
+                         <a href="#case-study-ipo" class="text-brand-blue hover:text-brand-blue-dark font-medium text-sm self-start group">
+                            상장 사례 더보기 <i class="fas fa-arrow-right ml-1 transition-transform duration-200 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- 2. Portfolio Company Showcase Section -->
+        <section id="portfolio-showcase" class="py-16 md:py-24 bg-gray-100">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">주요 포트폴리오 기업</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">AI 골드 러쉬 파트너스가 투자하고 함께 성장하는 혁신 기업들을 만나보세요. (가상 예시)</p>
+                </div>
+                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                     <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 text-center transition duration-300 hover:shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1496200186974-4293800e2c20?q=80&w=2664&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Company A 로고" class="h-12 mx-auto mb-4 object-contain">
+                        <h4 class="font-semibold text-lg text-gray-900 mb-1">Company A (가상)</h4>
+                        <p class="text-sm text-gray-600 mb-3">차세대 생성형 AI 플랫폼 개발</p>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full mb-4">글로벌 시장 진출 성공</span>
+                        <p class="text-xs text-gray-500 mb-4">시드 투자 이후 3년 만에 기업가치 10배 성장, 북미 시장 매출 50% 달성.</p>
+                         <a href="#portfolio-detail-a" class="text-brand-blue hover:underline font-medium text-sm">상세 보기</a>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 text-center transition duration-300 hover:shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1496200186974-4293800e2c20?q=80&w=2664&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Company B 로고" class="h-12 mx-auto mb-4 object-contain">
+                        <h4 class="font-semibold text-lg text-gray-900 mb-1">Company B (가상)</h4>
+                        <p class="text-sm text-gray-600 mb-3">AI 기반 의료 영상 진단 솔루션</p>
+                        <span class="inline-block bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full mb-4">대형 병원 파트너십 체결</span>
+                         <p class="text-xs text-gray-500 mb-4">기술 담보 대출 활용, 식약처 인허가 획득 및 국내 Top 5 병원과 공급 계약 체결.</p>
+                         <a href="#portfolio-detail-b" class="text-brand-blue hover:underline font-medium text-sm">상세 보기</a>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 text-center transition duration-300 hover:shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1496200186974-4293800e2c20?q=80&w=2664&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Company C 로고" class="h-12 mx-auto mb-4 object-contain">
+                        <h4 class="font-semibold text-lg text-gray-900 mb-1">Company C (가상)</h4>
+                        <p class="text-sm text-gray-600 mb-3">자율주행 로봇 시스템 개발</p>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full mb-4">전략적 M&A 성공</span>
+                         <p class="text-xs text-gray-500 mb-4">M&A 지원을 통해 핵심 센서 기술 보유 기업 인수, 기술 경쟁력 강화.</p>
+                         <a href="#portfolio-detail-c" class="text-brand-blue hover:underline font-medium text-sm">상세 보기</a>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- 3. Success Metrics Section -->
+        <section id="success-metrics" class="py-16 md:py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">우리의 성과 지표</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">지속적인 성장을 통해 가치를 증명하고 있습니다.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <span class="block text-4xl lg:text-5xl font-bold text-brand-blue">350%+</span>
+                        <p class="mt-2 text-lg text-gray-600">포트폴리오 기업<br>평균 매출 성장률 (연)</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <span class="block text-4xl lg:text-5xl font-bold text-brand-blue">₩ 500억+</span>
+                        <p class="mt-2 text-lg text-gray-600">누적 후속 투자<br>유치 금액</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <span class="block text-4xl lg:text-5xl font-bold text-brand-blue">15+ 개국</span>
+                         <p class="mt-2 text-lg text-gray-600">해외 시장<br>진출 국가 수</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                         <span class="block text-4xl lg:text-5xl font-bold text-brand-blue">2.5x</span>
+                         <p class="mt-2 text-lg text-gray-600">투자 후 평균<br>고용 인력 증가 배수</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Founder Interviews Section -->
+        <section id="founder-interviews" class="py-16 md:py-24 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">창업자 이야기</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">AI 골드 러쉬 파트너스와 함께한 창업자들의 생생한 경험을 들어보세요.</p>
+                </div>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                     <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left">
+                         <img src="https://avatar.iran.liara.run/public/29" alt="창업자 1 사진" class="w-24 h-24 rounded-full mb-4 sm:mb-0 sm:mr-6 flex-shrink-0 object-cover border-2 border-white shadow">
+                         <div>
+                            <blockquote class="text-gray-700 italic mb-4 interview-quote">
+                                AI 골드 러쉬 파트너스의 투자는 단순한 자금 지원 이상이었습니다. 협회의 검증과 P&F의 글로벌 네트워크는 저희 기술이 세계 시장에서 통할 수 있다는 확신을 주었고, 실제 성장을 이끌었습니다.
+                            </blockquote>
+                            <p class="font-semibold text-gray-900">김대표 (Company A CEO)</p>
+                            <a href="#interview-video-1" class="text-brand-blue hover:underline text-sm mt-2 inline-block">인터뷰 영상 보기 <i class="fas fa-play-circle ml-1"></i></a>
+                         </div>
+                     </div>
+                      <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left">
+                         <img src="https://avatar.iran.liara.run/public/24" alt="창업자 2 사진" class="w-24 h-24 rounded-full mb-4 sm:mb-0 sm:mr-6 flex-shrink-0 object-cover border-2 border-white shadow">
+                         <div>
+                            <blockquote class="text-gray-700 italic mb-4 interview-quote">
+                                기술 기반 스타트업에게 가장 필요한 것은 '신뢰'입니다. 한국인공지능협회의 추천과 체계적인 지원 덕분에 기술 개발에만 집중할 수 있었고, 어려운 자금 조달 문제를 해결할 수 있었습니다.
+                            </blockquote>
+                            <p class="font-semibold text-gray-900">박박사 (Company D CTO)</p>
+                            <a href="#interview-text-2" class="text-brand-blue hover:underline text-sm mt-2 inline-block">인터뷰 전문 읽기 <i class="fas fa-file-alt ml-1"></i></a>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (동일하게 유지) -->
+   <footer class="bg-gray-800 text-gray-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                 <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">AI Gold Rush Partners</h4>
+                    <p class="text-sm">한국인공지능협회와 피앤에프글로벌이 함께하는 AI 기업 전문 투자 파트너입니다.</p>
+                    <div class="mt-4 space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">바로가기</h4>
+                     <ul class="space-y-2 text-sm">
+                         <li><a href="about.html" class="hover:text-white">프로그램 소개</a></li>
+                         <li><a href="criteria.html" class="hover:text-white">투자 구조</a></li>
+                         <li><a href="partnership.html" class="hover:text-white">파트너십</a></li>
+                         <li><a href="criteria.html" class="hover:text-white">투자 기준</a></li>
+                         <li><a href="cases.html" class="hover:text-white">성공 사례</a></li>
+                         <li><a href="apply.html" class="hover:text-white">투자 신청</a></li>
+                         <li><a href="members.html" class="hover:text-white">회원사 전용</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">연락처</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> 서울특별시 강남구 테헤란로 </li>
+                        <li><i class="fas fa-phone-alt mr-2"></i> (02) 123-4567 </li>
+                        <li><i class="fas fa-envelope mr-2"></i> contact@aigoldrush.kr </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm">
+                 <p>© 2024 AI Gold Rush Partners (Korea AI Association & P&F Global). All Rights Reserved.</p>
+                 <div class="mt-2 space-x-4">
+                     <a href="privacy.html" class="hover:text-white">개인정보처리방침</a>
+                     <a href="terms.html" class="hover:text-white">이용약관</a>
+                 </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script (동일하게 유지) -->
+    <script>
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                 mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>

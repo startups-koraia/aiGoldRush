@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원사 전용 | AI 골드 러쉬 파트너스</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom Styles (Optional) */
+        .page-header-bg {
+             /* TODO: Replace with a relevant background image or keep simple */
+            background-color: #1e3a8a; /* brand-blue-dark */
+            background-position: center;
+        }
+        /* Initially hide member content, show based on login status */
+        #member-content-section {
+            display: none; /* Default: hidden. Show with JS/Backend logic if logged in */
+        }
+        /* Or, initially show login form */
+        /* #login-section {
+            display: block; // Default: shown. Hide with JS/Backend logic if logged in
+        } */
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#1e40af', // Example primary blue
+                        'brand-blue-dark': '#1e3a8a',
+                        'brand-secondary': '#f59e0b', // Example accent color (optional)
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans antialiased">
+
+    <!-- Header / Navigation (동일하게 유지, 현재 페이지 강조) -->
+    <header class="bg-white shadow-md sticky top-0 z-50 w-full">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+             <!-- Logo -->
+            <a href="index.html" class="text-2xl font-bold text-brand-blue hover:text-brand-blue-dark">
+                AI Gold Rush Partners
+            </a>
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-5 xl:space-x-7">
+                 <a href="index.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">홈</a>
+                <a href="about.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">프로그램 소개</a>
+                <a href="criteria.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">투자 구조</a>
+                <a href="partnership.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">파트너십</a>
+                <a href="criteria.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">투자 기준</a>
+                <a href="success-stories.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">성공 사례</a>
+                <a href="apply.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">신청하기</a>
+                <a href="members.html" class="ml-4 px-5 py-2 rounded-md bg-brand-blue text-white font-semibold hover:bg-brand-blue-dark transition duration-300">회원사 전용</a> 
+            </div>
+            <!-- Mobile Menu Button -->
+             <div class="lg:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 hover:text-brand-blue focus:outline-none">
+                    <svg class="w-7 h-7" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+         <!-- Mobile Menu (동일하게 유지) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white py-3 absolute w-full shadow-lg">
+            <a href="index.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">홈</a>
+            <a href="about.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">프로그램 소개</a>
+            <a href="criteria.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">투자 구조</a>
+            <a href="partnership.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">파트너십</a>
+            <a href="criteria.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">투자 기준</a>
+            <a href="success-stories.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">성공 사례</a>
+            <a href="apply.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">신청하기</a>
+            <a href="members.html" class="block px-6 py-3 mt-2 text-center bg-brand-blue text-white font-semibold rounded mx-4 hover:bg-brand-blue-dark transition duration-300">회원사 전용</a> 
+        </div>
+    </header>
+
+    <main class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+
+            <!-- Login Section (Show if NOT logged in) -->
+            
+            <section id="login-section" class="max-w-md mx-auto bg-white p-8 md:p-10 rounded-lg shadow-lg border border-gray-200">
+                 <h1 class="text-3xl font-bold text-center text-gray-900 mb-8">회원사 전용 로그인</h1>
+                 <form id="login-form" class="space-y-6" action="/member-login" method="POST"> 
+                     <div>
+                         <label for="member-id" class="block text-sm font-medium text-gray-700 mb-1">회원사 ID (또는 사업자등록번호)</label>
+                         <input type="text" id="member-id" name="member-id" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-brand-blue focus:border-brand-blue">
+                     </div>
+                     <div>
+                         <label for="password" class="block text-sm font-medium text-gray-700 mb-1">비밀번호</label>
+                         <input type="password" id="password" name="password" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-brand-blue focus:border-brand-blue">
+                     </div>
+                     <div class="flex items-center justify-between">
+                         <label class="flex items-center text-sm">
+                             <input type="checkbox" name="remember-me" class="rounded border-gray-300 text-brand-blue shadow-sm focus:border-brand-blue focus:ring focus:ring-offset-0 focus:ring-blue-200 focus:ring-opacity-50">
+                             <span class="ml-2 text-gray-600">로그인 상태 유지</span>
+                         </label>
+                         <a href="#forgot-credentials" class="text-sm text-brand-blue hover:underline">ID/PW 찾기</a>
+                     </div>
+                      <button type="submit" class="w-full bg-brand-blue hover:bg-brand-blue-dark text-white font-semibold py-3 px-6 rounded-lg transition duration-300 text-lg">
+                         로그인
+                     </button>
+                 </form>
+                 <div class="mt-6 pt-6 border-t border-gray-200 text-center">
+                     <p class="text-sm text-gray-600">로그인에 문제가 있거나 도움이 필요하신 경우,<br> 협회 담당자에게 문의해주세요.</p>
+                     <p class="mt-2 text-sm font-medium text-gray-800">
+                         <i class="fas fa-phone-alt mr-1"></i> [협회 담당자 연락처] 
+                     </p>
+                      <p class="mt-1 text-sm font-medium text-gray-800">
+                         <i class="fas fa-envelope mr-1"></i> [협회 담당자 이메일] 
+                     </p>
+                 </div>
+            </section>
+
+             <!-- Member Content Section (Show if logged in) -->
+             
+            <section id="member-content-section">
+                <div class="text-center mb-12 md:mb-16">
+                    
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900">[회원사명]님, 환영합니다!</h1>
+                    <p class="mt-4 text-lg text-gray-600">AI 골드 러쉬 파트너스 회원사 전용 서비스를 이용하실 수 있습니다.</p>
+                     <a href="#logout" id="logout-button" class="mt-4 inline-block text-sm text-red-600 hover:underline">로그아웃</a>
+                 </div>
+
+                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+                    <!-- Left Column: Resources -->
+                    <div class="space-y-10">
+                         <section id="member-resources">
+                            <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-3 flex items-center">
+                                <i class="fas fa-book-open text-xl text-brand-blue mr-3"></i>회원사 전용 자료
+                            </h2>
+                            <div class="space-y-6">
+                                <div class="bg-white p-6 rounded-lg shadow border border-gray-200 flex items-start justify-between">
+                                    <div>
+                                        <h3 class="font-semibold text-lg text-gray-900 mb-1">투자 기준 상세 가이드</h3>
+                                        <p class="text-sm text-gray-600">AI 골드 러쉬 파트너스의 상세 평가 기준 및 준비 사항 안내</p>
+                                    </div>
+                                    <a href="/path/to/criteria-guide.pdf" download class="ml-4 flex-shrink-0 bg-blue-100 text-brand-blue hover:bg-blue-200 px-4 py-2 rounded-md text-sm font-medium transition duration-200">
+                                        <i class="fas fa-download mr-1"></i> 다운로드
+                                    </a>
+                                </div>
+                                <div class="bg-white p-6 rounded-lg shadow border border-gray-200 flex items-start justify-between">
+                                    <div>
+                                        <h3 class="font-semibold text-lg text-gray-900 mb-1">투자 유치 핸드북</h3>
+                                        <p class="text-sm text-gray-600">성공적인 투자 유치를 위한 IR 자료 작성법 및 피칭 전략</p>
+                                    </div>
+                                    <a href="/path/to/ir-handbook.pdf" download class="ml-4 flex-shrink-0 bg-blue-100 text-brand-blue hover:bg-blue-200 px-4 py-2 rounded-md text-sm font-medium transition duration-200">
+                                         <i class="fas fa-download mr-1"></i> 다운로드
+                                    </a>
+                                </div>
+                                <div class="bg-white p-6 rounded-lg shadow border border-gray-200 flex items-start justify-between">
+                                    <div>
+                                        <h3 class="font-semibold text-lg text-gray-900 mb-1">협회 추천서 발급 신청</h3>
+                                        <p class="text-sm text-gray-600">AI 골드 러쉬 파트너스 투자 신청을 위한 협회 추천서 발급 절차 안내 및 신청</p>
+                                    </div>
+                                     
+                                     <a href="#recommendation-application-form" class="ml-4 flex-shrink-0 bg-green-600 text-white hover:bg-green-700 px-4 py-2 rounded-md text-sm font-medium transition duration-200">
+                                        <i class="fas fa-paper-plane mr-1"></i> 신청하기
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Right Column: Investment Track -->
+                     <div class="space-y-10">
+                         <section id="investment-track">
+                             <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-3 flex items-center">
+                                 <i class="fas fa-route text-xl text-brand-blue mr-3"></i>회원사 투자 트랙
+                            </h2>
+                            <div class="space-y-6">
+                                 <div class="bg-white p-6 rounded-lg shadow border border-gray-200 flex items-start justify-between">
+                                    <div>
+                                        <h3 class="font-semibold text-lg text-gray-900 mb-1">투자 상담 신청</h3>
+                                        <p class="text-sm text-gray-600">AI 골드 러쉬 파트너스 투자 전문가와 1:1 상담을 신청하세요.</p>
+                                    </div>
+                                    <a href="#consultation-request-form" class="ml-4 flex-shrink-0 bg-green-600 text-white hover:bg-green-700 px-4 py-2 rounded-md text-sm font-medium transition duration-200">
+                                        <i class="fas fa-calendar-check mr-1"></i> 상담 신청
+                                    </a>
+                                </div>
+                                <div class="bg-white p-6 rounded-lg shadow border border-gray-200 flex items-start justify-between">
+                                    <div>
+                                        <h3 class="font-semibold text-lg text-gray-900 mb-1">실시간 신청 현황 확인</h3>
+                                        <p class="text-sm text-gray-600">제출하신 투자 신청서의 현재 처리 상태를 확인합니다.</p>
+                                    </div>
+                                     
+                                     <a href="#application-status" class="ml-4 flex-shrink-0 bg-yellow-500 text-white hover:bg-yellow-600 px-4 py-2 rounded-md text-sm font-medium transition duration-200">
+                                        <i class="fas fa-tasks mr-1"></i> 현황 확인
+                                    </a>
+                                </div>
+                                 <div class="bg-white p-6 rounded-lg shadow border border-gray-200 flex items-start justify-between">
+                                    <div>
+                                        <h3 class="font-semibold text-lg text-gray-900 mb-1">맞춤형 IR 자료 템플릿</h3>
+                                        <p class="text-sm text-gray-600">투자자에게 효과적으로 어필할 수 있는 IR Deck 템플릿 제공</p>
+                                    </div>
+                                    <a href="/path/to/ir-template.pptx" download class="ml-4 flex-shrink-0 bg-blue-100 text-brand-blue hover:bg-blue-200 px-4 py-2 rounded-md text-sm font-medium transition duration-200">
+                                        <i class="fas fa-file-download mr-1"></i> 템플릿 받기
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+                     </div>
+                 </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer (동일하게 유지) -->
+   <footer class="bg-gray-800 text-gray-400 py-12 mt-16">
+       
+       <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                 <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">AI Gold Rush Partners</h4>
+                    <p class="text-sm">한국인공지능협회와 피앤에프글로벌이 함께하는 AI 기업 전문 투자 파트너입니다.</p>
+                    <div class="mt-4 space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">바로가기</h4>
+                     <ul class="space-y-2 text-sm">
+                         <li><a href="about.html" class="hover:text-white">프로그램 소개</a></li>
+                         <li><a href="criteria.html" class="hover:text-white">투자 구조</a></li>
+                         <li><a href="partnership.html" class="hover:text-white">파트너십</a></li>
+                         <li><a href="criteria.html" class="hover:text-white">투자 기준</a></li>
+                         <li><a href="success-stories.html" class="hover:text-white">성공 사례</a></li>
+                         <li><a href="apply.html" class="hover:text-white">투자 신청</a></li>
+                         <li><a href="members.html" class="hover:text-white">회원사 전용</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">연락처</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> 서울특별시 강남구 테헤란로 </li>
+                        <li><i class="fas fa-phone-alt mr-2"></i> (02) 123-4567 </li>
+                        <li><i class="fas fa-envelope mr-2"></i> contact@aigoldrush.kr </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm">
+                 <p>© 2024 AI Gold Rush Partners (Korea AI Association & P&F Global). All Rights Reserved.</p>
+                 <div class="mt-2 space-x-4">
+                     <a href="privacy.html" class="hover:text-white">개인정보처리방침</a>
+                     <a href="terms.html" class="hover:text-white">이용약관</a>
+                 </div>
+            </div>
+        </div>
+   </footer>
+
+    <!-- Basic JS for Login State Simulation (Needs proper implementation) -->
+    <script>
+        const loginSection = document.getElementById('login-section');
+        const memberContentSection = document.getElementById('member-content-section');
+        const logoutButton = document.getElementById('logout-button');
+
+        // ** IMPORTANT: Replace this with actual server-side session/token check **
+        // Simulate login status (true = logged in, false = logged out)
+        const isLoggedIn = false; // Change to true to see member content
+
+        if (isLoggedIn) {
+            loginSection.style.display = 'none';
+            memberContentSection.style.display = 'block';
+        } else {
+            loginSection.style.display = 'block';
+            memberContentSection.style.display = 'none';
+        }
+
+        // TODO: Implement actual logout functionality (e.g., clear session/token, redirect)
+        if(logoutButton) {
+            logoutButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Logout functionality needs to be implemented.');
+                // Example: window.location.href = '/logout';
+            });
+        }
+
+        // Mobile Menu Toggle Script (Keep this)
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                 mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>

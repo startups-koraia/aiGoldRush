@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로그램 소개 | AI 골드 러쉬 파트너스</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom Styles (Optional) */
+        /* Add smooth scrolling if desired */
+        /* html { scroll-behavior: smooth; } */
+        .page-header-bg {
+             /* TODO: Replace with a relevant background image */
+            background-image: url('https://images.unsplash.com/photo-1472148439583-1f4cf81b80e0?q=80&w=2662&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-position: center;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#1e40af', // Example primary blue
+                        'brand-blue-dark': '#1e3a8a',
+                        'brand-secondary': '#f59e0b', // Example accent color (optional)
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- Header / Navigation (동일하게 유지, 현재 페이지 강조) -->
+    <header class="bg-white shadow-md sticky top-0 z-50 w-full">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="text-2xl font-bold text-brand-blue hover:text-brand-blue-dark">
+                AI Gold Rush Partners
+            </a>
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-5 xl:space-x-7">
+                <a href="index.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">홈</a>
+                <a href="about.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-brand-blue">프로그램 소개</a> 
+                <a href="financing.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">투자 구조</a>
+                <a href="partnership.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">파트너십</a>
+                <a href="criteria.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">투자 기준</a>
+                <a href="cases.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">성공 사례</a>
+                <a href="apply.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">신청하기</a>
+                <a href="members.html" class="ml-4 px-5 py-2 rounded-md bg-brand-blue text-white font-semibold hover:bg-brand-blue-dark transition duration-300">회원사 전용</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="lg:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 hover:text-brand-blue focus:outline-none">
+                    <svg class="w-7 h-7" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu (동일하게 유지) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white py-3 absolute w-full shadow-lg">
+            <a href="index.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">홈</a>
+            <a href="about.html" class="block px-6 py-2 text-gray-700 bg-gray-100 text-brand-blue font-medium">프로그램 소개</a> {/* 현재 페이지 활성화 */}
+            <a href="financing.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">투자 구조</a>
+            <a href="partnership.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">파트너십</a>
+            <a href="criteria.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">투자 기준</a>
+            <a href="cases.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">성공 사례</a>
+            <a href="apply.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">신청하기</a>
+            <a href="members.html" class="block px-6 py-3 mt-2 text-center bg-brand-blue text-white font-semibold rounded mx-4 hover:bg-brand-blue-dark transition duration-300">회원사 전용</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header-bg bg-cover bg-center py-20 md:py-32 text-white relative">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold">AI 골드 러쉬 파트너스 소개</h1>
+                <p class="mt-4 text-lg md:text-xl text-gray-200">대한민국 AI 산업의 글로벌 도약을 이끄는 동반자</p>
+            </div>
+        </section>
+
+        <!-- 1. Company Overview Section -->
+        <section id="overview" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+                    <!-- Main Content -->
+                    <div class="lg:col-span-2">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">AI 골드 러쉬 파트너스는</h2>
+                        <div class="space-y-6 text-gray-700 text-lg leading-relaxed">
+                            <p><strong class="text-brand-blue">설립 배경 및 미션:</strong> 급변하는 글로벌 AI 시장에서 대한민국 기업들이 기술 경쟁력을 확보하고 세계 무대에서 활약할 수 있도록, 체계적이고 전문적인 지원의 필요성이 대두되었습니다. AI 골드 러쉬 파트너스는 한국 AI 기업의 발굴, 육성, 투자를 통해 글로벌 성공 스토리를 만들고, 나아가 대한민국 AI 산업 생태계를 강화하는 것을 미션으로 삼고 있습니다.</p>
+                            <p><strong class="text-brand-blue">협업 스토리:</strong> 본 프로그램은 대한민국 AI 산업의 구심점인 <span class="font-semibold">한국인공지능협회</span>의 공신력과 네트워크, 그리고 글로벌 투자 및 컨설팅 전문기업 <span class="font-semibold">피앤에프글로벌</span>의 전문성이 결합되어 탄생했습니다. 양 기관은 시너지를 통해 기술 검증부터 투자, 글로벌 진출까지 원스톱 지원 체계를 구축했습니다.</p>
+                            <p><strong class="text-brand-blue">시장 잠재력:</strong> 대한민국은 우수한 인재와 기술력을 바탕으로 AI 분야에서 높은 성장 잠재력을 가지고 있습니다. AI 골드 러쉬 파트너스는 이러한 잠재력을 현실화하여, 한국이 글로벌 AI 시장의 핵심 플레이어로 자리매김하는 데 기여하고자 합니다.</p>
+                        </div>
+                    </div>
+                    <!-- Sidebar / Greetings -->
+                    <div class="lg:col-span-1 space-y-8">
+                        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">대표 인사말</h3>
+                            <div class="flex items-center mb-4">
+                                <img src="https://avatar.iran.liara.run/public/12" alt="김현철 대표 사진" class="w-16 h-16 rounded-full mr-4 object-cover">
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">김현철</h4>
+                                    <p class="text-sm text-gray-500">한국인공지능협회 회장</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-600 italic">"협회의 검증된 네트워크와 파트너사의 전문성을 결합하여, 우리 AI 기업들이 세계로 뻗어나갈 수 있는 든든한 발판을 마련하겠습니다."</p>
+                        </div>
+                         <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                            <div class="flex items-center mb-4">
+                                <img src="https://avatar.iran.liara.run/public/26" alt="조영일 대표 사진" class="w-16 h-16 rounded-full mr-4 object-cover">
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">조영일</h4>
+                                    <p class="text-sm text-gray-500">피앤에프글로벌 대표</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-600 italic">"잠재력 있는 기술 기업을 발굴하고, 맞춤형 금융 및 전략 지원을 통해 글로벌 유니콘으로 성장시키는 데 모든 역량을 집중하겠습니다."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. AI Champion Road Program Details -->
+        <section id="champion-road-details" class="py-16 md:py-24 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">핵심 프로그램: AI 챔피언 로드</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">글로벌 AI 시장을 선도할 대한민국 대표 기업 육성 프로젝트</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-16">
+                    <!-- Program Description -->
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">프로그램 개요</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li><strong class="font-medium text-gray-900">주요 목표:</strong> 글로벌 경쟁력을 갖춘 AI 스타트업 및 중소기업 발굴 및 스케일업 지원</li>
+                            <li><strong class="font-medium text-gray-900">비전:</strong> 대한민국 AI 기술의 세계 시장 주도권 확보 및 산업 생태계 선순환 구조 구축</li>
+                            <li><strong class="font-medium text-gray-900">운영 기간:</strong> 2025년 ~ 2030년 (5개년 계획)</li>
+                            <li><strong class="font-medium text-gray-900">기대 성과:</strong>
+                                <ul class="list-disc list-inside ml-4 mt-1 text-sm">
+                                    <li>5년간 유망 AI 기업 100개 이상 육성</li>
+                                    <li>글로벌 Top-Tier AI 챔피언 기업 10개 이상 배출</li>
+                                    <li>참여 기업 평균 성장률 30% 이상 달성</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Differentiation Points -->
+                     <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">AI 챔피언 로드만의 차별점</h3>
+                        <div class="space-y-5">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-blue text-white flex items-center justify-center mr-4 mt-1">
+                                    <i class="fas fa-shield-alt text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">협회 중심의 검증 시스템</h4>
+                                    <p class="text-gray-600 text-sm">한국인공지능협회의 엄격한 기준을 통과한, 기술력과 성장 잠재력이 검증된 기업 선별</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-blue text-white flex items-center justify-center mr-4 mt-1">
+                                    <i class="fas fa-user-tie text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">산업 특화 전문가 멘토링</h4>
+                                    <p class="text-gray-600 text-sm">AI, 반도체, 로봇 등 각 분야 최고 전문가들의 맞춤형 기술 및 경영 멘토링 제공</p>
+                                </div>
+                            </div>
+                             <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-blue text-white flex items-center justify-center mr-4 mt-1">
+                                    <i class="fas fa-globe text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">글로벌 네트워크 접근성</h4>
+                                    <p class="text-gray-600 text-sm">해외 투자 유치, 파트너십 구축, 시장 진출을 위한 P&F글로벌의 강력한 글로벌 네트워크 활용</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Target Areas -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">주요 대상 기술 분야</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition duration-300">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-brain text-3xl text-brand-blue"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold text-center mb-3">인공지능 (AI)</h4>
+                            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                                <li>머신러닝 / 딥러닝</li>
+                                <li>자연어 처리 (NLP)</li>
+                                <li>컴퓨터 비전</li>
+                                <li>데이터 분석 및 예측</li>
+                                <li>AI 기반 서비스 플랫폼</li>
+                                <!-- TODO: Add more specific AI areas -->
+                            </ul>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition duration-300">
+                             <div class="text-center mb-3">
+                                <i class="fas fa-microchip text-3xl text-brand-blue"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold text-center mb-3">반도체</h4>
+                            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                                <li>AI 반도체 (NPU 등)</li>
+                                <li>시스템 반도체 설계</li>
+                                <li>첨단 패키징 기술</li>
+                                <li>차세대 메모리</li>
+                                <li>관련 소재 및 장비</li>
+                                <!-- TODO: Add more specific Semiconductor areas -->
+                            </ul>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition duration-300">
+                             <div class="text-center mb-3">
+                                <i class="fas fa-robot text-3xl text-brand-blue"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold text-center mb-3">로봇 및 자동화</h4>
+                            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                                <li>지능형 로봇 시스템</li>
+                                <li>협동 로봇</li>
+                                <li>자율주행 기술 (로봇)</li>
+                                <li>스마트 팩토리 솔루션</li>
+                                <li>물류 자동화</li>
+                                <!-- TODO: Add more specific Robotics areas -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Team Introduction Section -->
+        <section id="team" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">우리를 이끄는 사람들</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">각 분야 최고의 전문성을 갖춘 리더들이 함께합니다.</p>
+                </div>
+
+                <!-- Key Personnel -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-8 text-center">경영진 및 핵심 팀</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Sample Person Card - Repeat for each key person -->
+                        <div class="text-center bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                             <img src="https://avatar.iran.liara.run/public/28" alt="팀원 1 사진" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-white shadow-md">
+                             <h4 class="font-semibold text-lg text-gray-900">팀원 이름 1</h4>
+                             <p class="text-sm text-brand-blue font-medium mb-1">직책/역할 (협회)</p>
+                             <p class="text-xs text-gray-500">주요 경력 또는 전문 분야 요약</p>
+                        </div>
+                        <div class="text-center bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                             <img src="https://avatar.iran.liara.run/public/28" alt="팀원 2 사진" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-white shadow-md">
+                             <h4 class="font-semibold text-lg text-gray-900">팀원 이름 2</h4>
+                             <p class="text-sm text-purple-600 font-medium mb-1">직책/역할 (P&F)</p>
+                             <p class="text-xs text-gray-500">주요 경력 또는 전문 분야 요약</p>
+                        </div>
+                        <div class="text-center bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                             <img src="https://avatar.iran.liara.run/public/28" alt="팀원 3 사진" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-white shadow-md">
+                             <h4 class="font-semibold text-lg text-gray-900">팀원 이름 3</h4>
+                             <p class="text-sm text-brand-blue font-medium mb-1">직책/역할 (협회)</p>
+                             <p class="text-xs text-gray-500">주요 경력 또는 전문 분야 요약</p>
+                        </div>
+                        <div class="text-center bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                             <img src="https://avatar.iran.liara.run/public/28" alt="팀원 4 사진" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-white shadow-md">
+                             <h4 class="font-semibold text-lg text-gray-900">팀원 이름 4</h4>
+                              <p class="text-sm text-purple-600 font-medium mb-1">직책/역할 (P&F)</p>
+                             <p class="text-xs text-gray-500">주요 경력 또는 전문 분야 요약</p>
+                        </div>
+                         <!-- Add more team member cards -->
+                    </div>
+                </div>
+
+                 <!-- Investment Committee -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-8 text-center">투자 심사위원회</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                         <!-- Sample Committee Member Card -->
+                         <div class="text-center bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                             <img src="https://avatar.iran.liara.run/public/76" alt="심사위원 1 사진" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-white shadow-md">
+                             <h4 class="font-semibold text-lg text-gray-900">심사위원 이름 1</h4>
+                             <p class="text-sm text-gray-600 mb-1">소속 및 직책</p>
+                             <p class="text-xs text-gray-500">AI 기술 전문가</p>
+                         </div>
+                         <div class="text-center bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                             <img src="https://avatar.iran.liara.run/public/76" alt="심사위원 2 사진" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-white shadow-md">
+                             <h4 class="font-semibold text-lg text-gray-900">심사위원 이름 2</h4>
+                             <p class="text-sm text-gray-600 mb-1">소속 및 직책</p>
+                             <p class="text-xs text-gray-500">투자/금융 전문가</p>
+                         </div>
+                         <!-- Add more committee member cards -->
+                    </div>
+                </div>
+
+                 <!-- Advisory Board -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-8 text-center">자문단</h3>
+                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                         <!-- Sample Advisor Card -->
+                         <div class="text-center bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                             <img src="https://avatar.iran.liara.run/public/73" alt="자문위원 1 사진" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-white shadow-md">
+                             <h4 class="font-semibold text-lg text-gray-900">자문위원 이름 1</h4>
+                             <p class="text-sm text-gray-600 mb-1">소속 및 직책</p>
+                             <p class="text-xs text-gray-500">산업/기술 동향 전문가</p>
+                         </div>
+                          <div class="text-center bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                             <img src="https://avatar.iran.liara.run/public/73" alt="자문위원 2 사진" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-white shadow-md">
+                             <h4 class="font-semibold text-lg text-gray-900">자문위원 이름 2</h4>
+                             <p class="text-sm text-gray-600 mb-1">소속 및 직책</p>
+                             <p class="text-xs text-gray-500">글로벌 마켓 전문가</p>
+                         </div>
+                          <!-- Add more advisor cards -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (동일하게 유지) -->
+    <footer class="bg-gray-800 text-gray-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                 <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">AI Gold Rush Partners</h4>
+                    <p class="text-sm">한국인공지능협회와 피앤에프글로벌이 함께하는 AI 기업 전문 투자 파트너입니다.</p>
+                    <div class="mt-4 space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">바로가기</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="about.html" class="hover:text-white">프로그램 소개</a></li>
+                        <li><a href="financing.html" class="hover:text-white">투자 구조</a></li>
+                        <li><a href="criteria.html" class="hover:text-white">투자 기준</a></li>
+                        <li><a href="#apply" class="hover:text-white">투자 신청</a></li>
+                        <li><a href="#members" class="hover:text-white">회원사 전용</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">연락처</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> 서울특별시 강남구 테헤란로 </li>
+                        <li><i class="fas fa-phone-alt mr-2"></i> (02) 123-4567 </li>
+                        <li><i class="fas fa-envelope mr-2"></i> contact@aigoldrush.kr </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm">
+                 <p>© 2024 AI Gold Rush Partners (Korea AI Association & P&F Global). All Rights Reserved.</p>
+                 <div class="mt-2 space-x-4">
+                     <a href="privacy.html" class="hover:text-white">개인정보처리방침</a>
+                     <a href="terms.html" class="hover:text-white">이용약관</a>
+                 </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script (동일하게 유지) -->
+    <script>
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                 mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>

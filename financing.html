@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>투자 구조 | AI 골드 러쉬 파트너스</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom Styles (Optional) */
+        .page-header-bg {
+             /* TODO: Replace with a relevant background image */
+            background-image: url('https://images.unsplash.com/photo-1504119089809-1d5100a33f27?q=80&w=2650&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-position: center;
+        }
+        /* Style for simple flowchart steps */
+        .flowchart-step {
+            @apply relative bg-white p-4 rounded-lg shadow border border-gray-200 text-center transition duration-300 hover:shadow-md;
+        }
+        .flowchart-arrow {
+            @apply text-blue-400 text-2xl my-2 md:my-0 md:mx-2;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#1e40af', // Example primary blue
+                        'brand-blue-dark': '#1e3a8a',
+                        'brand-secondary': '#f59e0b', // Example accent color (optional)
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- Header / Navigation (동일하게 유지, 현재 페이지 강조) -->
+    <header class="bg-white shadow-md sticky top-0 z-50 w-full">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="text-2xl font-bold text-brand-blue hover:text-brand-blue-dark">
+                AI Gold Rush Partners
+            </a>
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-5 xl:space-x-7">
+                <a href="index.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">홈</a>
+                <a href="about.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">프로그램 소개</a>
+                <a href="financing.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-brand-blue">투자 구조</a>
+                <a href="partnership.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">파트너십</a>
+                <a href="criteria.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">투자 기준</a>
+                <a href="cases.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">성공 사례</a>
+                <a href="apply.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">신청하기</a>
+                <a href="members.html" class="ml-4 px-5 py-2 rounded-md bg-brand-blue text-white font-semibold hover:bg-brand-blue-dark transition duration-300">회원사 전용</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="lg:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 hover:text-brand-blue focus:outline-none">
+                    <svg class="w-7 h-7" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu (동일하게 유지) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white py-3 absolute w-full shadow-lg">
+            <a href="index.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">홈</a>
+            <a href="about.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">프로그램 소개</a>
+            <a href="financing.html" class="block px-6 py-2 text-gray-700 bg-gray-100 text-brand-blue font-medium">투자 구조</a>
+            <a href="partnership.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">파트너십</a>
+            <a href="criteria.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">투자 기준</a>
+            <a href="cases.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">성공 사례</a>
+            <a href="apply.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">신청하기</a>
+            <a href="members.html" class="block px-6 py-3 mt-2 text-center bg-brand-blue text-white font-semibold rounded mx-4 hover:bg-brand-blue-dark transition duration-300">회원사 전용</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header-bg bg-cover bg-center py-20 md:py-32 text-white relative">
+            <div class="absolute inset-0 bg-black opacity-60"></div>
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold">투자 구조</h1>
+                <p class="mt-4 text-lg md:text-xl text-gray-200">기업의 성장을 위한 최적의 금융 솔루션 제공</p>
+            </div>
+        </section>
+
+        <!-- 1. Diverse Funding Options Section -->
+        <section id="funding-options" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">다양한 자금 지원 형태</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">기업의 성장 단계와 전략적 목표에 맞춰 투자, 대출, M&A, 상장 지원 등 최적화된 금융 솔루션을 조합하여 제공합니다.</p>
+                </div>
+
+                <div class="space-y-16">
+                    <!-- Equity Investment -->
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center"><i class="fas fa-chart-pie text-brand-blue mr-3"></i>투자 (Equity Investment)</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-lg mb-2 text-brand-blue">시드 단계</h4>
+                                <p class="text-gray-600 text-sm mb-2"><strong class="text-gray-800">규모:</strong> 1억원 ~ 10억원</p>
+                                <p class="text-gray-600 text-sm mb-2"><strong class="text-gray-800">형태:</strong> SAFE, 전환사채(CB) 등</p>
+                                <p class="text-xs text-gray-500">초기 기술 검증 및 시장 진입 지원</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-lg mb-2 text-brand-blue">성장 단계 (Series A/B)</h4>
+                                <p class="text-gray-600 text-sm mb-2"><strong class="text-gray-800">규모:</strong> 10억원 ~ 100억원</p>
+                                <p class="text-gray-600 text-sm mb-2"><strong class="text-gray-800">형태:</strong> 보통주, 우선주(CPS, RCPS)</p>
+                                <p class="text-xs text-gray-500">본격적인 시장 확장 및 사업 고도화</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-lg mb-2 text-brand-blue">확장 단계 (Series C+)</h4>
+                                <p class="text-gray-600 text-sm mb-2"><strong class="text-gray-800">규모:</strong> 200억원 이상</p>
+                                <p class="text-gray-600 text-sm mb-2"><strong class="text-gray-800">형태:</strong> 컨소시엄 구성, 전략적 투자 유치</p>
+                                <p class="text-xs text-gray-500">글로벌 스케일업 및 M&A, IPO 준비</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-4">* 투자 조건 및 지분율은 기업 가치 평가 및 협의에 따라 결정됩니다.</p>
+                    </div>
+
+                    <!-- Loan -->
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center"><i class="fas fa-comments-dollar text-green-600 mr-3"></i>대출 (Loan)</h3>
+                         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                             <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-lg mb-2 text-green-700">기술 담보 대출</h4>
+                                <p class="text-gray-600 text-sm mb-2">AI 기술 가치 평가 기반 특별 대출</p>
+                                <p class="text-xs text-gray-500">지식재산권(IP) 등 무형자산 활용</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-lg mb-2 text-green-700">운영 자금 대출</h4>
+                                <p class="text-gray-600 text-sm mb-2">단기 운영 자금 지원 (최대 10억원)</p>
+                                <p class="text-xs text-gray-500">매출 채권, 계약 기반 등</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-lg mb-2 text-green-700">R&D 프로젝트 파이낸싱</h4>
+                                <p class="text-gray-600 text-sm mb-2">개발 자금 선지원 (프로젝트 규모의 최대 80%)</p>
+                                <p class="text-xs text-gray-500">기술 개발 마일스톤 연동</p>
+                            </div>
+                         </div>
+                         <p class="text-sm text-gray-500 mt-4">* 대출 조건(이자율, 상환기간, 담보 등)은 심사 결과 및 상품별로 상이합니다.</p>
+                    </div>
+
+                    <!-- M&A Funding -->
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center"><i class="fas fa-handshake text-purple-600 mr-3"></i>M&A 자금 지원</h3>
+                         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                             <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-lg mb-2 text-purple-700">인수 자금 지원</h4>
+                                <p class="text-gray-600 text-sm mb-2">기술/시장 확장을 위한 인수합병 자금 지원</p>
+                                <p class="text-xs text-gray-500">인수금융(LBO 등) 구조화</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-lg mb-2 text-purple-700">브릿지론 (Bridge Loan)</h4>
+                                <p class="text-gray-600 text-sm mb-2">M&A 과정에서의 단기 자금 지원 (최대 50억원)</p>
+                                <p class="text-xs text-gray-500">본 계약 전후 유동성 공급</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-lg mb-2 text-purple-700">전략적 매각 지원</h4>
+                                <p class="text-gray-600 text-sm mb-2">기업 가치 극대화를 위한 매각 전략 및 자문</p>
+                                <p class="text-xs text-gray-500">잠재 인수자 발굴 및 협상 지원</p>
+                            </div>
+                         </div>
+                          <p class="text-sm text-gray-500 mt-4">* M&A 딜 구조 및 기업 상황에 따라 맞춤형 솔루션을 제공합니다.</p>
+                    </div>
+
+                     <!-- IPO Support -->
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center"><i class="fas fa-landmark text-yellow-600 mr-3"></i>상장 (IPO) 지원</h3>
+                         <div class="bg-gray-50 p-8 rounded-lg border border-gray-200">
+                            <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-sm text-gray-700">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-yellow-600 mt-1 mr-2"></i>
+                                    <span><strong class="text-gray-900">Pre-IPO 컨설팅:</strong> 상장 요건 충족을 위한 재무, 내부통제, 지배구조 개선 등 맞춤 컨설팅</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-yellow-600 mt-1 mr-2"></i>
+                                     <span><strong class="text-gray-900">상장 트랙 지원:</strong> KOSDAQ 일반/기술특례, 테슬라 방식 등 최적의 상장 경로 선택 및 준비 지원</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-yellow-600 mt-1 mr-2"></i>
+                                    <span><strong class="text-gray-900">주간사 연계:</strong> 주요 증권사와의 파트너십을 통한 효율적인 상장 주간사 선정 및 협업 지원</span>
+                                </li>
+                                 <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-yellow-600 mt-1 mr-2"></i>
+                                    <span><strong class="text-gray-900">SPAC 합병 중개:</strong> 국내외 우량 SPAC과의 합병 기회 모색 및 중개</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-yellow-600 mt-1 mr-2"></i>
+                                     <span><strong class="text-gray-900">상장 비용 지원:</strong> 상장 과정에서 발생하는 실사, 법률 자문 등 필수 비용 일부 지원 (최대 3억원)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- 2. Funding Selection Guide Section -->
+        <section id="funding-guide" class="py-16 md:py-24 bg-gray-100">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">자금 지원 선택 가이드</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">기업의 현재 상황과 미래 목표에 가장 적합한 자금 조달 전략을 수립하세요.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Scenario Recommendations -->
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">상황별 최적 자금 조달 방식 예시</h3>
+                        <div class="space-y-5">
+                            <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+                                <h4 class="font-semibold mb-1">초기 기술 개발 단계</h4>
+                                <p class="text-sm text-gray-600"><strong class="text-brand-blue">추천 조합:</strong> 시드 투자 (SAFE/CB) + R&D 프로젝트 파이낸싱</p>
+                                <p class="text-xs text-gray-500 mt-1">핵심 기술 개발 및 프로토타입 제작 자금 확보</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+                                <h4 class="font-semibold mb-1">시장 확장 단계</h4>
+                                <p class="text-sm text-gray-600"><strong class="text-brand-blue">추천 조합:</strong> 시리즈 A/B 투자 (우선주) + 운영 자금 대출</p>
+                                <p class="text-xs text-gray-500 mt-1">마케팅 강화, 인력 충원, 생산 시설 확충 자금</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+                                <h4 class="font-semibold mb-1">인수합병(M&A) 추진 단계</h4>
+                                <p class="text-sm text-gray-600"><strong class="text-brand-blue">추천 조합:</strong> M&A 인수 자금 지원 + 브릿지론</p>
+                                <p class="text-xs text-gray-500 mt-1">전략적 M&A 실행을 위한 자금 조달 및 단기 유동성 확보</p>
+                            </div>
+                             <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+                                <h4 class="font-semibold mb-1">상장(IPO) 준비 단계</h4>
+                                <p class="text-sm text-gray-600"><strong class="text-brand-blue">추천 조합:</strong> Pre-IPO 투자 + 상장 컨설팅 및 비용 지원</p>
+                                <p class="text-xs text-gray-500 mt-1">상장 요건 충족 및 성공적인 IPO 실행 지원</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Decision Tree / Complex Packages -->
+                     <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">맞춤형 복합 금융 설계</h3>
+                        <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-200 space-y-4">
+                            <p class="text-gray-700">단일 금융 수단만으로는 기업의 복잡한 니즈를 충족하기 어려울 수 있습니다.</p>
+                            <p class="text-gray-700">AI 골드 러쉬 파트너스는 각 기업의 재무 상태, 성장 전략, 시장 상황 등을 종합적으로 분석하여 <strong class="text-brand-blue">최적의 복합 금융 패키지를 설계</strong>합니다.</p>
+                            <div>
+                                <h4 class="font-semibold mb-2 text-gray-800">자금 조달 결정 시 고려사항:</h4>
+                                <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                                    <li>현재 필요한 자금 규모 및 용도</li>
+                                    <li>지분 희석에 대한 민감도</li>
+                                    <li>상환 능력 및 담보 제공 가능 여부</li>
+                                    <li>중장기적인 자금 조달 계획</li>
+                                    <li>전략적 목표 달성 (M&A, IPO 등)</li>
+                                </ul>
+                            </div>
+                             <p class="text-sm text-gray-500 pt-4 border-t border-gray-200">
+                                <i class="fas fa-info-circle mr-1"></i> 전문가와의 상담을 통해 기업 상황에 맞는 최적의 자금 조달 전략을 수립하는 것이 중요합니다. <a href="#contact" class="text-brand-blue hover:underline font-medium">상담 신청하기</a>
+                             </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Investment Process Section -->
+                <!-- 3. Investment Process Section -->
+                <section id="process" class="py-16 md:py-24 bg-white">
+                    <div class="container mx-auto px-6">
+                        <div class="text-center mb-12 md:mb-16">
+                            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">단계별 투자 프로세스</h2>
+                            <p class="text-lg text-gray-600 max-w-3xl mx-auto">투명하고 체계적인 프로세스를 통해 신속하고 효율적인 투자를 진행합니다.</p>
+                        </div>
+                        <!-- Flowchart using CSS Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-8 gap-y-12 items-start relative">
+        
+                            <!-- Step 1 -->
+                            <div class="relative text-center group pt-6"> 
+                                <div class="bg-white p-4 rounded-lg shadow border border-gray-200 transition duration-300 group-hover:shadow-lg z-10 relative">
+                                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-blue text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ring-4 ring-white">1</div>
+                                    <p class="mt-2 text-sm font-medium">회원사 전용 확인/신청</p>
+                                </div>
+                                <div class="absolute top-1/2 -right-4 transform -translate-y-1/2 hidden lg:block group-[&:nth-child(5n)]:hidden group-[&:last-child]:hidden z-0">
+                                   <i class="fas fa-long-arrow-alt-right text-blue-300 text-2xl"></i>
+                                </div>
+                                 <div class="absolute left-1/2 -bottom-7 transform -translate-x-1/2 block lg:hidden group-[&:last-child]:hidden z-0">
+                                    <i class="fas fa-long-arrow-alt-down text-blue-300 text-2xl"></i>
+                                </div>
+                                 <div class="absolute top-1/2 -right-4 transform -translate-y-1/2 hidden sm:block lg:hidden group-[&:nth-child(2n)]:hidden group-[&:last-child]:hidden z-0"> {/* Arrow for sm/md screens */}
+                                   <i class="fas fa-long-arrow-alt-right text-blue-300 text-2xl"></i>
+                                </div>
+                            </div>
+        
+                             <!-- Step 2 -->
+                            <div class="relative text-center group pt-6">
+                                <div class="bg-white p-4 rounded-lg shadow border border-gray-200 transition duration-300 group-hover:shadow-lg z-10 relative">
+                                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-blue text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ring-4 ring-white">2</div>
+                                    <p class="mt-2 text-sm font-medium">초기 심사 (협회)</p>
+                                </div>
+   
+                                 <div class="absolute top-1/2 -right-4 transform -translate-y-1/2 hidden lg:block group-[&:nth-child(5n)]:hidden group-[&:last-child]:hidden z-0">
+                                   <i class="fas fa-long-arrow-alt-right text-blue-300 text-2xl"></i>
+                                </div>
+                                 <!-- <div class="absolute left-1/2 -bottom-7 transform -translate-x-1/2 block group-[&:last-child]:hidden z-0">  -->
+                                    <!-- <i class="fas fa-long-arrow-alt-down text-blue-300 text-2xl"></i> -->
+                                <!-- </div> -->
+
+                            </div>
+        
+                             <!-- Step 3 -->
+                            <div class="relative text-center group pt-6">
+                                <div class="bg-white p-4 rounded-lg shadow border border-gray-200 transition duration-300 group-hover:shadow-lg z-10 relative">
+                                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-blue text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ring-4 ring-white">3</div>
+                                    <p class="mt-2 text-sm font-medium">협회장 추천</p>
+                                </div>
+                                 <div class="absolute top-1/2 -right-4 transform -translate-y-1/2 hidden lg:block group-[&:nth-child(5n)]:hidden group-[&:last-child]:hidden z-0">
+                                   <i class="fas fa-long-arrow-alt-right text-blue-300 text-2xl"></i>
+                                </div>
+                                 <div class="absolute left-1/2 -bottom-7 transform -translate-x-1/2 block lg:hidden group-[&:last-child]:hidden z-0">
+                                    <i class="fas fa-long-arrow-alt-down text-blue-300 text-2xl"></i>
+                                </div>
+                                 <div class="absolute top-1/2 -right-4 transform -translate-y-1/2 hidden sm:block lg:hidden group-[&:nth-child(2n)]:hidden group-[&:last-child]:hidden z-0">
+                                   <i class="fas fa-long-arrow-alt-right text-blue-300 text-2xl"></i>
+                                </div>
+                            </div>
+        
+                             <!-- Step 4 -->
+                            <div class="relative text-center group pt-6">
+                                <div class="bg-white p-4 rounded-lg shadow border border-gray-200 transition duration-300 group-hover:shadow-lg z-10 relative">
+                                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-blue text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ring-4 ring-white">4</div>
+                                    <p class="mt-2 text-sm font-medium">정식 신청 (AI챔피언)</p>
+                                </div>
+                                 <div class="absolute top-1/2 -right-4 transform -translate-y-1/2 hidden lg:block group-[&:nth-child(5n)]:hidden group-[&:last-child]:hidden z-0">
+                                   <i class="fas fa-long-arrow-alt-right text-blue-300 text-2xl"></i>
+                                </div>
+                                 <!-- <div class="absolute left-1/2 -bottom-7 transform -translate-x-1/2 block group-[&:last-child]:hidden z-0"> -->
+                                    <!-- <i class="fas fa-long-arrow-alt-down text-blue-300 text-2xl"></i> -->
+                                <!-- </div> -->
+                            </div>
+        
+                             <!-- Step 5 -->
+                            <div class="relative text-center group pt-6">
+                                <div class="bg-white p-4 rounded-lg shadow border border-gray-200 transition duration-300 group-hover:shadow-lg z-10 relative">
+                                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-blue text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ring-4 ring-white">5</div>
+                                    <p class="mt-2 text-sm font-medium">서류 검토</p>
+                                </div>
+                                <!-- <div class="absolute left-1/2 -bottom-7 transform -translate-x-1/2 block group-[&:last-child]:hidden z-0"> -->
+                                   <!-- <i class="fas fa-long-arrow-alt-right text-blue-300 text-2xl"></i> -->
+                               <!-- </div> -->
+                                <div class="absolute top-1/2 -right-4 transform -translate-y-1/2 hidden sm:block lg:hidden group-[&:nth-child(2n)]:hidden group-[&:last-child]:hidden z-0">
+                                   <i class="fas fa-long-arrow-alt-right text-blue-300 text-2xl"></i>
+                                </div>
+                           </div>
+        
+                             <!-- Step 6 -->
+                            <div class="relative text-center group pt-6">
+                                <div class="bg-white p-4 rounded-lg shadow border border-gray-200 transition duration-300 group-hover:shadow-lg z-10 relative">
+                                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-blue text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ring-4 ring-white">6</div>
+                                    <p class="mt-2 text-sm font-medium">실사 및 심층 미팅</p>
+                                </div>
+                                <div class="absolute top-1/2 -right-4 transform -translate-y-1/2 hidden lg:block group-[&:nth-child(5n)]:hidden group-[&:last-child]:hidden z-0">
+                                   <i class="fas fa-long-arrow-alt-right text-blue-300 text-2xl"></i>
+                                </div>
+                                 <div class="absolute left-1/2 -bottom-7 transform -translate-x-1/2 block lg:hidden group-[&:last-child]:hidden z-0">
+                                    <i class="fas fa-long-arrow-alt-down text-blue-300 text-2xl"></i>
+                                </div>
+                                 <div class="absolute top-1/2 -right-4 transform -translate-y-1/2 hidden sm:block lg:hidden group-[&:nth-child(2n)]:hidden group-[&:last-child]:hidden z-0">
+                                   <i class="fas fa-long-arrow-alt-right text-blue-300 text-2xl"></i>
+                                </div>
+                            </div>
+        
+                             <!-- Step 7 -->
+                            <div class="relative text-center group pt-6">
+                                <div class="bg-white p-4 rounded-lg shadow border border-gray-200 transition duration-300 group-hover:shadow-lg z-10 relative">
+                                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-blue text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ring-4 ring-white">7</div>
+                                    <p class="mt-2 text-sm font-medium">투자 심의</p>
+                                </div>
+                                 <div class="absolute top-1/2 -right-4 transform -translate-y-1/2 hidden lg:block group-[&:nth-child(5n)]:hidden group-[&:last-child]:hidden z-0">
+                                   <i class="fas fa-long-arrow-alt-right text-blue-300 text-2xl"></i>
+                                </div>
+                                 <!-- <div class="absolute left-1/2 -bottom-7 transform -translate-x-1/2 block group-[&:last-child]:hidden z-0"> -->
+                                    <!-- <i class="fas fa-long-arrow-alt-down text-blue-300 text-2xl"></i> -->
+                                <!-- </div> -->
+                            </div>
+        
+                             <!-- Step 8 -->
+                            <div class="relative text-center group pt-6">
+                                <div class="bg-white p-4 rounded-lg shadow border border-gray-200 transition duration-300 group-hover:shadow-lg z-10 relative">
+                                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-blue text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ring-4 ring-white">8</div>
+                                    <p class="mt-2 text-sm font-medium">계약 체결</p>
+                                </div>
+                                 <div class="absolute top-1/2 -right-4 transform -translate-y-1/2 hidden lg:block group-[&:nth-child(5n)]:hidden group-[&:last-child]:hidden z-0">
+                                   <i class="fas fa-long-arrow-alt-right text-blue-300 text-2xl"></i>
+                                </div>
+                                 <div class="absolute left-1/2 -bottom-7 transform -translate-x-1/2 block lg:hidden group-[&:last-child]:hidden z-0">
+                                    <i class="fas fa-long-arrow-alt-down text-blue-300 text-2xl"></i>
+                                </div>
+                                 <div class="absolute top-1/2 -right-4 transform -translate-y-1/2 hidden sm:block lg:hidden group-[&:nth-child(2n)]:hidden group-[&:last-child]:hidden z-0">
+                                   <i class="fas fa-long-arrow-alt-right text-blue-300 text-2xl"></i>
+                                </div>
+                            </div>
+        
+                             <!-- Step 9 -->
+                            <div class="relative text-center group pt-6">
+                                <div class="bg-white p-4 rounded-lg shadow border border-gray-200 transition duration-300 group-hover:shadow-lg z-10 relative">
+                                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-blue text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ring-4 ring-white">9</div>
+                                    <p class="mt-2 text-sm font-medium">투자금 집행</p>
+                                </div>
+                                 <div class="absolute top-1/2 -right-4 transform -translate-y-1/2 hidden lg:block group-[&:nth-child(5n)]:hidden group-[&:last-child]:hidden z-0">
+                                   <i class="fas fa-long-arrow-alt-right text-blue-300 text-2xl"></i>
+                                </div>
+                                 <!-- <div class="absolute left-1/2 -bottom-7 transform -translate-x-1/2 block group-[&:last-child]:hidden z-0"> -->
+                                    <!-- <i class="fas fa-long-arrow-alt-down text-blue-300 text-2xl"></i> -->
+                                <!-- </div> -->
+                            </div>
+        
+                             <!-- Step 10 -->
+                            <div class="relative text-center group pt-6">
+                                 <div class="bg-blue-50 p-4 rounded-lg shadow border border-blue-200 transition duration-300 group-hover:shadow-lg z-10 relative"> 
+                                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ring-4 ring-white">10</div>
+                                    <p class="mt-2 text-sm font-medium text-brand-blue">후속 지원 시작</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+        <!-- 4. Stage-Specific Details Section -->
+        <section id="stage-details" class="py-16 md:py-24 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">단계별 투자 조건</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">각 투자 단계별 주요 조건 및 진행 절차를 확인하세요.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Seed Stage -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold text-brand-blue mb-4 border-b pb-2">시드 단계</h3>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li><strong class="text-gray-900 w-20 inline-block">투자 범위:</strong> 1억원 ~ 10억원</li>
+                            <li><strong class="text-gray-900 w-20 inline-block">투자 형태:</strong> SAFE, 전환사채(CB)</li>
+                            <li><strong class="text-gray-900 w-20 inline-block">소요 기간:</strong> 평균 1~2개월</li>
+                            <li><strong class="text-gray-900 w-20 inline-block">주요 서류:</strong> 사업계획서, 기술소개서, 팀 소개자료, (예비)재무정보 등</li>
+                        </ul>
+                    </div>
+                    <!-- Growth Stage -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold text-brand-blue mb-4 border-b pb-2">성장 단계</h3>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li><strong class="text-gray-900 w-20 inline-block">투자 범위:</strong> 10억원 ~ 100억원</li>
+                            <li><strong class="text-gray-900 w-20 inline-block">투자 형태:</strong> 보통주, 우선주(CPS/RCPS)</li>
+                             <li><strong class="text-gray-900 w-20 inline-block">소요 기간:</strong> 평균 2~3개월</li>
+                            <li><strong class="text-gray-900 w-20 inline-block">주요 서류:</strong> IR Deck, 재무제표(감사보고서), 주주명부, 정관, 기술/시장 분석 자료 등</li>
+                        </ul>
+                    </div>
+                    <!-- Expansion Stage -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold text-brand-blue mb-4 border-b pb-2">확장 단계</h3>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                             <li><strong class="text-gray-900 w-20 inline-block">투자 범위:</strong> 200억원 이상</li>
+                             <li><strong class="text-gray-900 w-20 inline-block">투자 형태:</strong> 컨소시엄 구성, 전략적 투자</li>
+                             <li><strong class="text-gray-900 w-20 inline-block">소요 기간:</strong> 평균 3~4개월</li>
+                             <li><strong class="text-gray-900 w-20 inline-block">주요 서류:</strong> 성장 단계 서류 + 상세 실사 자료(DD), 향후 3~5년 사업계획, M&A/IPO 계획 등</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Post-Investment Support Section -->
+        <section id="post-investment" class="py-16 md:py-24 bg-white">
+             <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">투자 후 지원 프로그램</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">단순 자금 지원을 넘어, 기업의 지속적인 성장을 위한 동반자가 됩니다.</p>
+                </div>
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                     <!-- Mentoring System -->
+                     <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                         <div class="flex items-center mb-3">
+                            <i class="fas fa-users text-2xl text-brand-blue mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">멘토링 시스템</h3>
+                         </div>
+                         <p class="text-sm text-gray-700 mb-3">각 분야 전문가로 구성된 멘토단이 기업 성장을 밀착 지원합니다.</p>
+                         <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                            <li>리드 멘토 (전략 및 경영 총괄)</li>
+                            <li>기술 멘토 (기술 고도화 및 R&D)</li>
+                            <li>비즈니스 멘토 (사업 개발 및 마케팅)</li>
+                             <li>전략 멘토 (글로벌 진출, M&A/IPO)</li>
+                         </ul>
+                         <p class="text-xs text-gray-500 mt-2">정기/비정기 멘토링 세션 운영</p>
+                     </div>
+                     <!-- Network Support -->
+                     <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                          <div class="flex items-center mb-3">
+                            <i class="fas fa-network-wired text-2xl text-green-600 mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">네트워크 지원</h3>
+                         </div>
+                         <p class="text-sm text-gray-700 mb-3">성장 가속화를 위한 핵심 네트워크를 연결합니다.</p>
+                         <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                             <li>대기업/중견기업과의 기술 협력 및 PoC 연계</li>
+                             <li>해외 VC, 액셀러레이터, 잠재 고객사 연결</li>
+                             <li>정부 지원 사업 및 정책 자금 정보 제공</li>
+                             <li>산업별 주요 컨퍼런스 및 행사 참여 지원</li>
+                         </ul>
+                     </div>
+                      <!-- Follow-on Funding Support -->
+                     <div class="bg-yellow-50 p-6 rounded-lg border border-yellow-200">
+                          <div class="flex items-center mb-3">
+                            <i class="fas fa-chart-line text-2xl text-yellow-600 mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">후속 투자 지원</h3>
+                         </div>
+                         <p class="text-sm text-gray-700 mb-3">다음 단계 성장을 위한 안정적인 자금 확보를 지원합니다.</p>
+                         <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                             <li>후속 투자 유치를 위한 전략 수립 지원</li>
+                             <li>IR 자료(Pitch Deck) 고도화 컨설팅</li>
+                             <li>투자자 대상 피칭 트레이닝 제공</li>
+                             <li>국내외 후속 투자자 네트워크 연계</li>
+                         </ul>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+         <!-- 6. Timeline Visualization Section (Simplified Text/List Version) -->
+        <section id="timeline" class="py-16 md:py-20 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">투자 진행 타임라인 (평균)</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">신청부터 투자금 집행까지, 단계별 평균 소요 기간입니다. (기업 상황에 따라 변동될 수 있습니다)</p>
+                </div>
+                <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow border border-gray-200">
+                    <ol class="relative border-l border-gray-300 space-y-6">
+                        <li class="ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-4 ring-white">
+                                <i class="fas fa-file-alt text-xs text-brand-blue"></i>
+                            </span>
+                            <h4 class="font-semibold">1. 신청 및 초기 검토 (1-2주)</h4>
+                            <p class="text-sm text-gray-600">회원사 전용 확인, 신청서 접수 및 기본 요건 검토</p>
+                        </li>
+                         <li class="ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-4 ring-white">
+                                <i class="fas fa-users text-xs text-brand-blue"></i>
+                            </span>
+                            <h4 class="font-semibold">2. 심층 검토 및 미팅 (2-4주)</h4>
+                            <p class="text-sm text-gray-600">서류 심사, 기술/시장 분석, 경영진 미팅</p>
+                        </li>
+                         <li class="ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-4 ring-white">
+                                <i class="fas fa-search-dollar text-xs text-brand-blue"></i>
+                            </span>
+                            <h4 class="font-semibold">3. 실사 (Due Diligence) (2-4주)</h4>
+                            <p class="text-sm text-gray-600">재무, 법률, 기술 등 상세 실사 진행 (성장 단계 이상)</p>
+                        </li>
+                        <li class="ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-4 ring-white">
+                                <i class="fas fa-gavel text-xs text-brand-blue"></i>
+                            </span>
+                            <h4 class="font-semibold">4. 투자 심의 및 조건 협의 (1-2주)</h4>
+                            <p class="text-sm text-gray-600">투자심의위원회 검토 및 최종 투자 조건 협상</p>
+                        </li>
+                         <li class="ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-green-200 rounded-full -left-3 ring-4 ring-white">
+                                <i class="fas fa-check text-xs text-green-700"></i>
+                            </span>
+                            <h4 class="font-semibold">5. 계약 및 집행 (1주)</h4>
+                            <p class="text-sm text-gray-600">투자 계약 체결 및 투자금 집행</p>
+                        </li>
+                    </ol>
+                     <p class="text-center text-sm text-gray-500 mt-8 pt-4 border-t">
+                        총 소요 기간은 투자 단계 및 기업별 특성에 따라 상이하며, 평균적으로 <strong class="text-gray-800">2개월 ~ 4개월</strong> 소요됩니다.
+                     </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (동일하게 유지) -->
+   <footer class="bg-gray-800 text-gray-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                 <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">AI Gold Rush Partners</h4>
+                    <p class="text-sm">한국인공지능협회와 피앤에프글로벌이 함께하는 AI 기업 전문 투자 파트너입니다.</p>
+                    <div class="mt-4 space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">바로가기</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="about.html" class="hover:text-white">프로그램 소개</a></li>
+                        <li><a href="financing.html" class="hover:text-white">투자 구조</a></li>
+                        <li><a href="criteria.html" class="hover:text-white">투자 기준</a></li>
+                        <li><a href="apply.html" class="hover:text-white">투자 신청</a></li>
+                        <li><a href="members.html" class="hover:text-white">회원사 전용</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">연락처</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> 서울특별시 강남구 테헤란로 </li>
+                        <li><i class="fas fa-phone-alt mr-2"></i> (02) 123-4567 </li>
+                        <li><i class="fas fa-envelope mr-2"></i> contact@aigoldrush.kr </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm">
+                 <p>© 2024 AI Gold Rush Partners (Korea AI Association & P&F Global). All Rights Reserved.</p>
+                 <div class="mt-2 space-x-4">
+                     <a href="privacy.html" class="hover:text-white">개인정보처리방침</a>
+                     <a href="terms.html" class="hover:text-white">이용약관</a>
+                 </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script (동일하게 유지) -->
+    <script>
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                 mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>

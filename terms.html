@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이용약관 | AI 골드 러쉬 파트너스</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom Styles (Optional) */
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#1e40af', // Example primary blue
+                        'brand-blue-dark': '#1e3a8a',
+                        'brand-secondary': '#f59e0b', // Example accent color (optional)
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-800 font-sans antialiased">
+
+    <!-- Header / Navigation (동일하게 유지) -->
+    <header class="bg-white shadow-md sticky top-0 z-50 w-full">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="text-2xl font-bold text-brand-blue hover:text-brand-blue-dark">
+                AI Gold Rush Partners
+                <!-- Optional: <img src="logo.png" alt="AI Gold Rush Partners Logo" class="h-8"> -->
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-5 xl:space-x-7">
+                <!-- <a href="index.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-brand-blue">홈</a> -->
+                <a href="about.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">프로그램 소개</a> 
+                <a href="financing.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">투자 구조</a>
+                <a href="partnership.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">파트너십</a>
+                <a href="criteria.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">투자 기준</a>
+                <a href="cases.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">성공 사례</a>
+                <a href="apply.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">신청하기</a>
+                <a href="members.html" class="ml-4 px-5 py-2 rounded-md bg-brand-blue text-white font-semibold hover:bg-brand-blue-dark transition duration-300">회원사 전용</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="lg:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 hover:text-brand-blue focus:outline-none">
+                    <svg class="w-7 h-7" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white py-3 absolute w-full shadow-lg">
+            <a href="index.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">홈</a>
+            <a href="about.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">프로그램 소개</a>
+            <a href="financing.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">투자 구조</a>
+            <a href="partnership.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">파트너십</a>
+            <a href="criteria.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">투자 기준</a>
+            <a href="cases.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">성공 사례</a>
+            <a href="apply.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">신청하기</a>
+            <a href="members.html" class="block px-6 py-3 mt-2 text-center bg-brand-blue text-white font-semibold rounded mx-4 hover:bg-brand-blue-dark transition duration-300">회원사 전용</a>
+        </div>
+    </header>
+
+    <main class="py-16 md:py-24">
+         <div class="container mx-auto px-6">
+             <div class="max-w-4xl mx-auto bg-white p-8 md:p-10 rounded-lg shadow-md border border-gray-200">
+                 <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">이용약관</h1>
+                 <p class="text-center text-sm text-gray-500 mb-10">시행일: [YYYY년 MM월 DD일] </p>
+
+                 <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
+                    <!-- TODO: 아래 내용은 예시 구조이며, 반드시 법률 전문가의 검토를 받아 실제 내용으로 교체해야 합니다. -->
+
+                    <h2 class="text-xl font-semibold text-gray-800">제1조 (목적)</h2>
+                    <p>이 약관은 AI 골드 러쉬 파트너스(이하 "회사")가 제공하는 웹사이트 및 관련 제반 서비스(이하 "서비스")의 이용과 관련하여 회사와 회원 간의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
+
+                    <h2 class="text-xl font-semibold text-gray-800 pt-4 border-t border-gray-200">제2조 (정의)</h2>
+                    <p>이 약관에서 사용하는 용어의 정의는 다음과 같습니다.</p>
+                     <ol class="list-decimal list-inside space-y-1">
+                        <li>"서비스"라 함은 구현되는 단말기(PC, 모바일, 태블릿 PC 등의 각종 유무선 장치를 포함)와 상관없이 "회원"이 이용할 수 있는 AI 골드 러쉬 파트너스 관련 제반 서비스를 의미합니다.</li>
+                         <li>"회원"이라 함은 회사의 "서비스"에 접속하여 이 약관에 따라 "회사"와 이용계약을 체결하고 "회사"가 제공하는 "서비스"를 이용하는 고객을 말합니다. (특히, 협회 회원사 등 특정 자격을 요할 수 있습니다.)</li>
+                         <li>"아이디(ID)"라 함은 "회원"의 식별과 "서비스" 이용을 위하여 "회원"이 정하고 "회사"가 승인하는 문자와 숫자의 조합을 의미합니다.</li>
+                         <li>"비밀번호"라 함은 "회원"이 부여 받은 "아이디"와 일치되는 "회원"임을 확인하고 비밀보호를 위해 "회원" 자신이 정한 문자 또는 숫자의 조합을 의미합니다.</li>
+                         <li>"게시물"이라 함은 "회원"이 "서비스"를 이용함에 있어 "서비스상"에 게시한 부호·문자·음성·화상·동영상 등의 정보 형태의 글, 사진, 동영상 및 각종 파일과 링크 등을 의미합니다.</li>
+                    </ol>
+
+                    <h2 class="text-xl font-semibold text-gray-800 pt-4 border-t border-gray-200">제3조 (약관의 게시와 개정)</h2>
+                    <p>회사는 이 약관의 내용을 회원이 쉽게 알 수 있도록 서비스 초기 화면에 게시합니다. 회사는 관련 법령을 위배하지 않는 범위에서 이 약관을 개정할 수 있습니다. 약관을 개정할 경우에는 적용일자 및 개정사유를 명시하여 현행약관과 함께 제1항의 방식에 따라 그 개정약관의 적용일자 7일 전부터 적용일자 전일까지 공지합니다.</p>
+                    <!-- TODO: 약관 개정 관련 세부 절차 명시 -->
+
+                    <h2 class="text-xl font-semibold text-gray-800 pt-4 border-t border-gray-200">제4조 (서비스의 제공 및 변경)</h2>
+                     <p>회사는 회원에게 아래와 같은 서비스를 제공합니다.</p>
+                     <ol class="list-decimal list-inside space-y-1">
+                        <li>투자, 대출, M&A, 상장 지원 관련 정보 제공 서비스</li>
+                        <li>투자 신청 및 상담 서비스</li>
+                        <li>회원사 전용 자료 및 기능 제공 서비스</li>
+                        <li>기타 회사가 추가 개발하거나 다른 회사와의 제휴 계약 등을 통해 회원에게 제공하는 일체의 서비스</li>
+                    </ol>
+                    <p>회사는 상당한 이유가 있는 경우에 운영상, 기술상의 필요에 따라 제공하고 있는 전부 또는 일부 서비스를 변경할 수 있습니다.</p>
+
+                     <h2 class="text-xl font-semibold text-gray-800 pt-4 border-t border-gray-200">제5조 (서비스의 중단)</h2>
+                     <p>회사는 컴퓨터 등 정보통신설비의 보수점검, 교체 및 고장, 통신두절 또는 운영상 상당한 이유가 있는 경우 서비스의 제공을 일시적으로 중단할 수 있습니다. 이 경우 회사는 회원에게 통지합니다.</p>
+
+                    <h2 class="text-xl font-semibold text-gray-800 pt-4 border-t border-gray-200">제6조 (회원가입)</h2>
+                     <p>회원가입은 이용자가 약관의 내용에 대하여 동의를 한 다음 회원가입신청을 하고 회사가 이러한 신청에 대하여 승낙함으로써 체결됩니다. 회사는 특정 자격 요건(예: 협회 회원사)을 요구할 수 있습니다.</p>
+                     <!-- TODO: 회원가입 관련 상세 절차 및 자격 요건 명시 -->
+
+                    <h2 class="text-xl font-semibold text-gray-800 pt-4 border-t border-gray-200">제7조 (회원의 의무)</h2>
+                    <p>회원은 다음 행위를 하여서는 안 됩니다.</p>
+                     <ul class="list-disc list-inside space-y-1">
+                        <li>신청 또는 변경 시 허위 내용의 등록</li>
+                        <li>타인의 정보 도용</li>
+                        <li>회사가 게시한 정보의 변경</li>
+                        <li>회사가 정한 정보 이외의 정보(컴퓨터 프로그램 등) 등의 송신 또는 게시</li>
+                         <li>회사 및 기타 제3자의 저작권 등 지식재산권에 대한 침해</li>
+                        <li>회사 및 기타 제3자의 명예를 손상시키거나 업무를 방해하는 행위</li>
+                        <li>외설 또는 폭력적인 메시지, 화상, 음성, 기타 공서양속에 반하는 정보를 서비스에 공개 또는 게시하는 행위</li>
+                    </ul>
+
+                     <h2 class="text-xl font-semibold text-gray-800 pt-4 border-t border-gray-200">제8조 (회사의 의무)</h2>
+                     <p>회사는 관련 법령과 이 약관이 금지하거나 미풍양속에 반하는 행위를 하지 않으며, 계속적이고 안정적으로 서비스를 제공하기 위하여 최선을 다하여 노력합니다. 회사는 회원이 안전하게 서비스를 이용할 수 있도록 개인정보(신용정보 포함)보호를 위해 보안시스템을 갖추어야 하며 개인정보처리방침을 공시하고 준수합니다.</p>
+
+                    <h2 class="text-xl font-semibold text-gray-800 pt-4 border-t border-gray-200">제9조 (저작권의 귀속 및 이용제한)</h2>
+                    <p>회사가 작성한 저작물에 대한 저작권 기타 지식재산권은 회사에 귀속합니다. 회원은 서비스를 이용함으로써 얻은 정보 중 회사에게 지식재산권이 귀속된 정보를 회사의 사전 승낙 없이 복제, 송신, 출판, 배포, 방송 기타 방법에 의하여 영리 목적으로 이용하거나 제3자에게 이용하게 하여서는 안 됩니다.</p>
+
+                    <h2 class="text-xl font-semibold text-gray-800 pt-4 border-t border-gray-200">제10조 (면책조항)</h2>
+                    <p>회사는 천재지변 또는 이에 준하는 불가항력으로 인하여 서비스를 제공할 수 없는 경우에는 서비스 제공에 관한 책임이 면제됩니다. 회사는 회원의 귀책사유로 인한 서비스 이용의 장애에 대하여는 책임을 지지 않습니다. 회사는 회원이 서비스와 관련하여 게재한 정보, 자료, 사실의 신뢰도, 정확성 등의 내용에 관하여는 책임을 지지 않습니다.</p>
+                    <!-- TODO: 투자 관련 면책 조항 등 구체적인 내용 추가 필요 -->
+
+                     <h2 class="text-xl font-semibold text-gray-800 pt-4 border-t border-gray-200">제11조 (분쟁해결)</h2>
+                     <p>회사와 회원 간 제기된 소송은 대한민국법을 준거법으로 합니다. 회사와 회원 간 발생한 분쟁에 관한 소송은 민사소송법 상의 관할법원에 제소합니다.</p>
+
+                 </div>
+             </div>
+         </div>
+    </main>
+
+    <!-- Footer (동일하게 유지) -->
+   <footer class="bg-gray-800 text-gray-400 py-12 mt-16">
+         <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                 <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">AI Gold Rush Partners</h4>
+                    <p class="text-sm">한국인공지능협회와 피앤에프글로벌이 함께하는 AI 기업 전문 투자 파트너입니다.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">바로가기</h4>
+                     <ul class="space-y-2 text-sm">
+                         <li><a href="privacy.html" class="hover:text-white">개인정보처리방침</a></li>
+                         <li><a href="terms.html" class="hover:text-white">이용약관</a></li>
+                     </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm">
+                 <p>© 2024 AI Gold Rush Partners (Korea AI Association & P&F Global). All Rights Reserved.</p>
+                 <div class="mt-2 space-x-4">
+                     <a href="privacy.html" class="hover:text-white">개인정보처리방침</a>
+                     <a href="terms.html" class="hover:text-white">이용약관</a>
+                 </div>
+            </div>
+        </div>
+   </footer>
+
+    <!-- Mobile Menu Toggle Script (동일하게 유지) -->
+    <script>
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                 mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>

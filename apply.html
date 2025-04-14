@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신청하기 | AI 골드 러쉬 파트너스</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom Styles (Optional) */
+        .page-header-bg {
+             /* TODO: Replace with a relevant background image */
+            background-image: url('https://images.unsplash.com/photo-1542361345-89e58247f2d5?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Blue */
+            background-position: center;
+        }
+        /* Hide sections by default, manage visibility with JS */
+        #funding-type-selection, #application-form-section {
+            display: none;
+        }
+        /* Style for selected funding type */
+        .funding-type-card.selected {
+            border-color: #1e40af; /* brand-blue */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .funding-details { display: none; } /* Hide specific details initially */
+        .funding-details.active { display: block; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#1e40af', // Example primary blue
+                        'brand-blue-dark': '#1e3a8a',
+                        'brand-secondary': '#f59e0b', // Example accent color (optional)
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+    <!-- Header / Navigation (동일하게 유지, 현재 페이지 강조) -->
+    <header class="bg-white shadow-md sticky top-0 z-50 w-full">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+             <!-- Logo -->
+            <a href="index.html" class="text-2xl font-bold text-brand-blue hover:text-brand-blue-dark">
+                AI Gold Rush Partners
+            </a>
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-5 xl:space-x-7">
+                <a href="index.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">홈</a>
+                <a href="about.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">프로그램 소개</a>
+                <a href="criteria.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">투자 구조</a>
+                <a href="partnership.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">파트너십</a>
+                <a href="criteria.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">투자 기준</a>
+                <a href="cases.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-transparent hover:border-brand-blue transition duration-150">성공 사례</a>
+                <a href="apply.html" class="text-gray-700 hover:text-brand-blue font-medium pb-1 border-b-2 border-brand-blue">신청하기</a> 
+                <a href="members.html" class="ml-4 px-5 py-2 rounded-md bg-brand-blue text-white font-semibold hover:bg-brand-blue-dark transition duration-300">회원사 전용</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="lg:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 hover:text-brand-blue focus:outline-none">
+                    <svg class="w-7 h-7" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+         <!-- Mobile Menu (동일하게 유지) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white py-3 absolute w-full shadow-lg">
+             <a href="index.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">홈</a>
+            <a href="about.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">프로그램 소개</a>
+            <a href="criteria.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">투자 구조</a>
+            <a href="partnership.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">파트너십</a>
+            <a href="criteria.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">투자 기준</a>
+            <a href="cases.html" class="block px-6 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-blue font-medium">성공 사례</a>
+            <a href="members.html" class="block px-6 py-3 mt-2 text-center bg-brand-blue text-white font-semibold rounded mx-4 hover:bg-brand-blue-dark transition duration-300">회원사 전용</a>
+        </div>
+    </header>
+
+    <main class="py-16 md:py-24">
+        <!-- Page Header (Simplified for Apply Page) -->
+         <div class="container mx-auto px-6 text-center mb-12 md:mb-16">
+             <h1 class="text-4xl md:text-5xl font-bold text-gray-900">AI 골드 러쉬 파트너스 신청</h1>
+             <p class="mt-4 text-lg text-gray-600">대한민국 AI 산업의 미래를 함께 만들어갈 혁신 기업을 찾습니다.</p>
+         </div>
+
+         <div class="container mx-auto px-6">
+             <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-xl border border-gray-200">
+
+                 <!-- Step 1: Member Check Section -->
+                 <section id="member-check-section">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-3">1단계: 한국인공지능회원사 전용 확인</h2>
+                    <p class="text-sm text-gray-600 mb-6">AI 골드 러쉬 파트너스 프로그램은 한국인공지능회원사 전용를 대상으로 우선 진행됩니다. 회원 정보를 입력하여 확인해주세요.</p>
+                    <form id="member-check-form" class="space-y-4">
+                        <div>
+                            <label for="company-name-check" class="block text-sm font-medium text-gray-700 mb-1">기업명</label>
+                            <input type="text" id="company-name-check" name="company-name-check" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-brand-blue focus:border-brand-blue">
+                        </div>
+                        <div>
+                            <label for="biz-reg-num-check" class="block text-sm font-medium text-gray-700 mb-1">사업자등록번호</label>
+                            <input type="text" id="biz-reg-num-check" name="biz-reg-num-check" required placeholder="'-' 제외하고 입력" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-brand-blue focus:border-brand-blue">
+                        </div>
+                         <div>
+                            <label for="member-id-check" class="block text-sm font-medium text-gray-700 mb-1">회원사 전용 번호 (선택)</label>
+                            <input type="text" id="member-id-check" name="member-id-check" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-brand-blue focus:border-brand-blue">
+                        </div>
+                         <div>
+                            <label for="contact-email-check" class="block text-sm font-medium text-gray-700 mb-1">담당자 이메일</label>
+                            <input type="email" id="contact-email-check" name="contact-email-check" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-brand-blue focus:border-brand-blue">
+                        </div>
+                         <button type="button" id="confirm-membership-btn" class="w-full bg-brand-blue hover:bg-brand-blue-dark text-white font-semibold py-3 px-6 rounded-lg transition duration-300">회원사 확인</button>
+                         <div id="member-check-error" class="text-red-600 text-sm mt-2" style="display: none;">회원 정보가 확인되지 않습니다. 입력 정보를 다시 확인해주세요.</div>
+                    </form>
+
+                    <div class="mt-8 pt-6 border-t border-gray-200 text-center">
+                        <p class="text-gray-600 mb-3">아직 회원사 전용가 아니신가요?</p>
+                        <p class="text-sm text-gray-500 mb-4">회원사 가입 후 신청 가능합니다. 자세한 가입 방법 및 혜택을 알아보세요.</p>
+                        <a href="partnership.html#koraia-role" class="inline-block bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-5 rounded-lg transition duration-300 text-sm">
+                            회원사 가입 안내 보기
+                        </a>
+                    </div>
+                 </section>
+
+                 <!-- Step 2: Funding Type Selection Section (Initially Hidden) -->
+                 <section id="funding-type-selection" class="mt-10">
+                     <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-3">2단계: 희망 지원 유형 선택</h2>
+                     <p class="text-sm text-gray-600 mb-6">신청하고자 하는 자금 지원 유형을 선택해주세요. (복수 선택 가능)</p>
+                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                         <div class="funding-type-card border-2 border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-brand-blue transition duration-200" data-type="investment">
+                             <i class="fas fa-chart-pie text-3xl text-brand-blue mb-2"></i>
+                             <p class="font-semibold">투자</p>
+                         </div>
+                          <div class="funding-type-card border-2 border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-green-600 transition duration-200" data-type="loan">
+                             <i class="fas fa-comments-dollar text-3xl text-green-600 mb-2"></i>
+                             <p class="font-semibold">대출</p>
+                         </div>
+                          <div class="funding-type-card border-2 border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-purple-600 transition duration-200" data-type="mna">
+                             <i class="fas fa-handshake text-3xl text-purple-600 mb-2"></i>
+                             <p class="font-semibold">M&A 지원</p>
+                         </div>
+                          <div class="funding-type-card border-2 border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-yellow-600 transition duration-200" data-type="ipo">
+                             <i class="fas fa-landmark text-3xl text-yellow-600 mb-2"></i>
+                             <p class="font-semibold">상장(IPO) 지원</p>
+                         </div>
+                          <div class="funding-type-card border-2 border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-gray-500 transition duration-200 col-span-1 sm:col-span-2 lg:col-span-1" data-type="combined">
+                             <i class="fas fa-layer-group text-3xl text-gray-500 mb-2"></i>
+                             <p class="font-semibold">복합 지원</p>
+                             <p class="text-xs text-gray-500">(위 유형 중 복수 선택)</p>
+                         </div>
+                     </div>
+                     <button type="button" id="proceed-to-form-btn" class="mt-8 w-full bg-brand-blue hover:bg-brand-blue-dark text-white font-semibold py-3 px-6 rounded-lg transition duration-300 disabled:opacity-50" disabled>
+                         신청서 작성하기
+                     </button>
+                 </section>
+
+                 <!-- Step 3: Application Form Section (Initially Hidden) -->
+                 <section id="application-form-section" class="mt-10">
+                     <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-3">3단계: 신청서 작성</h2>
+                     <form id="application-form" class="space-y-8" action="/submit-application" method="POST" enctype="multipart/form-data"> 
+
+                        <fieldset>
+                             <legend class="text-lg font-semibold text-gray-900 mb-4">공통 기업 정보</legend>
+                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="company-name" class="block text-sm font-medium text-gray-700 mb-1">기업명</label>
+                                    <input type="text" id="company-name" name="company-name" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                </div>
+                                <div>
+                                    <label for="ceo-name" class="block text-sm font-medium text-gray-700 mb-1">대표자명</label>
+                                    <input type="text" id="ceo-name" name="ceo-name" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                </div>
+                                <div>
+                                    <label for="founding-date" class="block text-sm font-medium text-gray-700 mb-1">설립일</label>
+                                    <input type="date" id="founding-date" name="founding-date" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                </div>
+                                 <div>
+                                    <label for="website" class="block text-sm font-medium text-gray-700 mb-1">웹사이트</label>
+                                    <input type="url" id="website" name="website" placeholder="https://" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                </div>
+                                 <div>
+                                    <label for="biz-reg-num" class="block text-sm font-medium text-gray-700 mb-1">사업자등록번호</label>
+                                </div>
+                             </div>
+                        </fieldset>
+
+                         <fieldset>
+                             <legend class="text-lg font-semibold text-gray-900 mb-4">담당자 정보</legend>
+                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                 <div>
+                                    <label for="contact-name" class="block text-sm font-medium text-gray-700 mb-1">이름</label>
+                                    <input type="text" id="contact-name" name="contact-name" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                </div>
+                                <div>
+                                    <label for="contact-title" class="block text-sm font-medium text-gray-700 mb-1">직함</label>
+                                    <input type="text" id="contact-title" name="contact-title" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                </div>
+                                <div>
+                                    <label for="contact-email" class="block text-sm font-medium text-gray-700 mb-1">이메일</label>
+                                </div>
+                                <div>
+                                    <label for="contact-phone" class="block text-sm font-medium text-gray-700 mb-1">연락처</label>
+                                    <input type="tel" id="contact-phone" name="contact-phone" required placeholder="010-1234-5678" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                </div>
+                             </div>
+                         </fieldset>
+
+                         <fieldset>
+                             <legend class="text-lg font-semibold text-gray-900 mb-4">기업 분야</legend>
+                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="tech-field" class="block text-sm font-medium text-gray-700 mb-1">주요 기술 분야</label>
+                                    <select id="tech-field" name="tech-field" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                        <option value="">선택하세요</option>
+                                        <option value="ai">인공지능</option>
+                                        <option value="semiconductor">반도체</option>
+                                        <option value="robotics">로봇</option>
+                                    </select>
+                                </div>
+                                 <div>
+                                    <label for="tech-detail" class="block text-sm font-medium text-gray-700 mb-1">세부 기술 영역</label>
+                                     <select id="tech-detail" name="tech-detail" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                        <option value="">주요 기술 분야 먼저 선택</option>
+                                        <optgroup label="AI">
+                                            <option value="gen_ai">생성형 AI</option>
+                                            <option value="cog_ai">인지/분석 AI</option>
+                                            <option value="robot_ai">로봇/자율주행 AI</option>
+                                            <option value="edge_ai">엣지 AI</option>
+                                        </optgroup>
+                                         <optgroup label="반도체">
+                                            <option value="ai_chip">AI 반도체</option>
+                                            <option value="system_chip">시스템 반도체</option>
+                                             <option value="sensor_hw">센서 및 하드웨어</option>
+                                        </optgroup>
+                                          <optgroup label="로봇">
+                                            <option value="industrial_robot">산업용 로봇</option>
+                                            <option value="service_robot">서비스 로봇</option>
+                                              <option value="autonomous_sys">자율주행 시스템</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                             </div>
+                             <div class="mt-6">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">대상 산업 (복수 선택 가능)</label>
+                                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                                     <label class="flex items-center space-x-2 text-sm"><input type="checkbox" name="industry[]" value="manufacturing" class="rounded border-gray-300"><span>제조</span></label>
+                                    <label class="flex items-center space-x-2 text-sm"><input type="checkbox" name="industry[]" value="finance" class="rounded border-gray-300"><span>금융</span></label>
+                                    <label class="flex items-center space-x-2 text-sm"><input type="checkbox" name="industry[]" value="healthcare" class="rounded border-gray-300"><span>헬스케어</span></label>
+                                    <label class="flex items-center space-x-2 text-sm"><input type="checkbox" name="industry[]" value="logistics" class="rounded border-gray-300"><span>유통/물류</span></label>
+                                    <label class="flex items-center space-x-2 text-sm"><input type="checkbox" name="industry[]" value="media" class="rounded border-gray-300"><span>미디어/콘텐츠</span></label>
+                                    <label class="flex items-center space-x-2 text-sm"><input type="checkbox" name="industry[]" value="energy" class="rounded border-gray-300"><span>에너지/환경</span></label>
+                                    <label class="flex items-center space-x-2 text-sm"><input type="checkbox" name="industry[]" value="public" class="rounded border-gray-300"><span>공공/국방</span></label>
+                                    <label class="flex items-center space-x-2 text-sm"><input type="checkbox" name="industry[]" value="other" class="rounded border-gray-300"><span>기타</span></label>
+                                </div>
+                             </div>
+                         </fieldset>
+
+                         <fieldset>
+                             <legend class="text-lg font-semibold text-gray-900 mb-4">자금 지원 요청 정보</legend>
+
+                             <div id="funding-details-investment" class="funding-details space-y-4 p-4 border border-blue-200 rounded-md bg-blue-50">
+                                 <h4 class="font-semibold text-brand-blue"><i class="fas fa-chart-pie mr-2"></i>투자 요청 상세</h4>
+                                 <div>
+                                    <label for="investment-amount" class="block text-sm font-medium text-gray-700 mb-1">희망 투자 금액 범위</label>
+                                    <select id="investment-amount" name="investment-amount" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                         <option value="">선택하세요</option>
+                                         <option value="seed">1억 ~ 10억 (시드)</option>
+                                         <option value="growth">10억 ~ 100억 (성장)</option>
+                                         <option value="expansion">200억 이상 (확장)</option>
+                                    </select>
+                                 </div>
+                                  <div>
+                                    <label for="funding-history" class="block text-sm font-medium text-gray-700 mb-1">현재까지의 자금 조달 이력 (투자 라운드, 금액, 투자사 등)</label>
+                                    <textarea id="funding-history" name="funding-history" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+                                </div>
+                                 <div>
+                                    <label for="company-valuation" class="block text-sm font-medium text-gray-700 mb-1">최근 기업 가치 평가 금액 (있을 경우, 단위: 억원)</label>
+                                    <input type="number" id="company-valuation" name="company-valuation" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                </div>
+                             </div>
+
+                              <div id="funding-details-loan" class="funding-details space-y-4 p-4 border border-green-200 rounded-md bg-green-50 mt-4">
+                                  <h4 class="font-semibold text-green-700"><i class="fas fa-comments-dollar mr-2"></i>대출 요청 상세</h4>
+                                  <div>
+                                    <label for="loan-purpose" class="block text-sm font-medium text-gray-700 mb-1">대출 목적</label>
+                                    <select id="loan-purpose" name="loan-purpose" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                        <option value="">선택하세요</option>
+                                        <option value="operating">운영 자금</option>
+                                        <option value="rnd">R&D 자금</option>
+                                        <option value="facility">시설 투자</option>
+                                        <option value="hr">인력 확충</option>
+                                        <option value="other">기타 (직접 입력)</option>
+                                    </select>
+                                  </div>
+                                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                      <div>
+                                        <label for="loan-amount" class="block text-sm font-medium text-gray-700 mb-1">희망 대출 금액 (단위: 억원)</label>
+                                        <input type="number" id="loan-amount" name="loan-amount" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                      </div>
+                                      <div>
+                                        <label for="loan-term" class="block text-sm font-medium text-gray-700 mb-1">희망 대출 기간 (개월)</label>
+                                        <input type="number" id="loan-term" name="loan-term" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                      </div>
+                                       <div>
+                                        <label for="loan-repayment" class="block text-sm font-medium text-gray-700 mb-1">희망 상환 방식</label>
+                                        <input type="text" id="loan-repayment" name="loan-repayment" placeholder="예: 원리금균등분할" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                      </div>
+                                  </div>
+                                  <div>
+                                      <label class="block text-sm font-medium text-gray-700 mb-2">담보 제공 가능 여부 및 종류</label>
+                                       <div class="space-y-2">
+                                           <label class="flex items-center space-x-2 text-sm"><input type="checkbox" name="collateral[]" value="tech" class="rounded border-gray-300"><span>기술 담보 (IP 등)</span></label>
+                                           <label class="flex items-center space-x-2 text-sm"><input type="checkbox" name="collateral[]" value="asset" class="rounded border-gray-300"><span>유형 자산 담보</span></label>
+                                           <label class="flex items-center space-x-2 text-sm"><input type="checkbox" name="collateral[]" value="guarantee" class="rounded border-gray-300"><span>보증서</span></label>
+                                            <label class="flex items-center space-x-2 text-sm"><input type="checkbox" name="collateral[]" value="none" class="rounded border-gray-300"><span>해당 없음</span></label>
+                                       </div>
+                                       <label for="ip-status" class="block text-sm font-medium text-gray-700 mb-1 mt-3">주요 특허 등 지식재산권 현황</label>
+                                       <textarea id="ip-status" name="ip-status" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+                                  </div>
+                             </div>
+
+                             <div id="funding-details-mna" class="funding-details space-y-4 p-4 border border-purple-200 rounded-md bg-purple-50 mt-4">
+                                  <h4 class="font-semibold text-purple-700"><i class="fas fa-handshake mr-2"></i>M&A 지원 요청 상세</h4>
+                                   <div>
+                                    <label for="mna-type" class="block text-sm font-medium text-gray-700 mb-1">M&A 유형</label>
+                                    <select id="mna-type" name="mna-type" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                        <option value="">선택하세요</option>
+                                        <option value="sell-side">피인수 (매각) 지원</option>
+                                        <option value="buy-side">인수 지원</option>
+                                        <option value="merger">합병 지원</option>
+                                    </select>
+                                  </div>
+                                  <div>
+                                      <label for="mna-target" class="block text-sm font-medium text-gray-700 mb-1">대상 기업/산업 특성</label>
+                                      <textarea id="mna-target" name="mna-target" rows="2" placeholder="인수/합병/매각 대상의 특징, 산업 분야 등" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+                                  </div>
+                                   <div>
+                                      <label for="mna-synergy" class="block text-sm font-medium text-gray-700 mb-1">목표 시너지 효과</label>
+                                      <input type="text" id="mna-synergy" name="mna-synergy" placeholder="기술 확보, 시장 확대, 비용 절감 등" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                  </div>
+                                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                       <div>
+                                          <label for="mna-deal-size" class="block text-sm font-medium text-gray-700 mb-1">예상 거래 금액 (단위: 억원)</label>
+                                          <input type="number" id="mna-deal-size" name="mna-deal-size" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                      </div>
+                                      <div>
+                                          <label for="mna-structure" class="block text-sm font-medium text-gray-700 mb-1">희망 거래 구조</label>
+                                          <input type="text" id="mna-structure" name="mna-structure" placeholder="주식 인수, 자산 양수도 등" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                      </div>
+                                   </div>
+                             </div>
+
+                             <div id="funding-details-ipo" class="funding-details space-y-4 p-4 border border-yellow-200 rounded-md bg-yellow-50 mt-4">
+                                 <h4 class="font-semibold text-yellow-700"><i class="fas fa-landmark mr-2"></i>상장(IPO) 지원 요청 상세</h4>
+                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                     <div>
+                                        <label for="ipo-timing" class="block text-sm font-medium text-gray-700 mb-1">희망 상장 시기</label>
+                                        <input type="text" id="ipo-timing" name="ipo-timing" placeholder="예: 2026년 상반기" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                     </div>
+                                     <div>
+                                        <label for="ipo-market" class="block text-sm font-medium text-gray-700 mb-1">희망 상장 시장</label>
+                                         <select id="ipo-market" name="ipo-market" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                            <option value="">선택하세요</option>
+                                            <option value="kosdaq">KOSDAQ</option>
+                                            <option value="kospi">KOSPI</option>
+                                             <option value="nasdaq">NASDAQ</option>
+                                            <option value="other">기타 해외</option>
+                                        </select>
+                                     </div>
+                                      <div>
+                                        <label for="ipo-method" class="block text-sm font-medium text-gray-700 mb-1">희망 상장 방식</label>
+                                         <select id="ipo-method" name="ipo-method" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                            <option value="">선택하세요</option>
+                                            <option value="general">일반 상장</option>
+                                            <option value="tech_special">기술특례 상장</option>
+                                             <option value="spac">SPAC 합병</option>
+                                            <option value="other">기타</option>
+                                        </select>
+                                     </div>
+                                 </div>
+                                  <div>
+                                    <label for="ipo-readiness" class="block text-sm font-medium text-gray-700 mb-1">현재 상장 준비 단계 및 주요 과제</label>
+                                    <textarea id="ipo-readiness" name="ipo-readiness" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+                                  </div>
+                                   <div>
+                                    <label for="ipo-support-needed" class="block text-sm font-medium text-gray-700 mb-1">필요 지원 사항</label>
+                                    <input type="text" id="ipo-support-needed" name="ipo-support-needed" placeholder="예: 내부통제 구축 컨설팅, 주간사 선정 지원" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                  </div>
+                                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                       <div>
+                                        <label for="ipo-offering-size" class="block text-sm font-medium text-gray-700 mb-1">예상 공모 규모 (단위: 억원)</label>
+                                        <input type="number" id="ipo-offering-size" name="ipo-offering-size" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                       </div>
+                                       <div>
+                                        <label for="ipo-shareholders" class="block text-sm font-medium text-gray-700 mb-1">주요 주주 구성 현황</label>
+                                        <input type="text" id="ipo-shareholders" name="ipo-shareholders" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                       </div>
+                                  </div>
+                             </div>
+
+                         </fieldset>
+
+                         <fieldset>
+                             <legend class="text-lg font-semibold text-gray-900 mb-4">기업 소개</legend>
+                             <div class="space-y-4">
+                                 <div>
+                                     <label for="company-overview" class="block text-sm font-medium text-gray-700 mb-1">기업 개요 (500자 이내)</label>
+                                     <textarea id="company-overview" name="company-overview" rows="4" maxlength="500" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+                                 </div>
+                                  <div>
+                                     <label for="tech-service-desc" class="block text-sm font-medium text-gray-700 mb-1">핵심 기술 및 서비스 설명 (1000자 이내)</label>
+                                     <textarea id="tech-service-desc" name="tech-service-desc" rows="6" maxlength="1000" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+                                 </div>
+                                  <div>
+                                     <label for="competitive-advantage" class="block text-sm font-medium text-gray-700 mb-1">경쟁 우위 요소 (500자 이내)</label>
+                                     <textarea id="competitive-advantage" name="competitive-advantage" rows="4" maxlength="500" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+                                 </div>
+                                  <div>
+                                     <label for="market-strategy" class="block text-sm font-medium text-gray-700 mb-1">시장 기회 및 성장 전략 (500자 이내)</label>
+                                     <textarea id="market-strategy" name="market-strategy" rows="4" maxlength="500" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+                                 </div>
+                             </div>
+                         </fieldset>
+
+                          <fieldset>
+                             <legend class="text-lg font-semibold text-gray-900 mb-4">재무 정보</legend>
+                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                 <div>
+                                     <label for="revenue-y1" class="block text-sm font-medium text-gray-700 mb-1">최근 1년 매출 (단위: 억원)</label>
+                                     <input type="number" id="revenue-y1" name="revenue-y1" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                 </div>
+                                 <div>
+                                     <label for="revenue-y2" class="block text-sm font-medium text-gray-700 mb-1">최근 2년 매출 (단위: 억원)</label>
+                                     <input type="number" id="revenue-y2" name="revenue-y2" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                 </div>
+                                  <div>
+                                     <label for="revenue-y3" class="block text-sm font-medium text-gray-700 mb-1">최근 3년 매출 (단위: 억원)</label>
+                                     <input type="number" id="revenue-y3" name="revenue-y3" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                 </div>
+                                  <div>
+                                     <label for="profit-y1" class="block text-sm font-medium text-gray-700 mb-1">최근 1년 영업이익 (단위: 억원)</label>
+                                     <input type="number" id="profit-y1" name="profit-y1" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                 </div>
+                                  <div>
+                                     <label for="profit-y2" class="block text-sm font-medium text-gray-700 mb-1">최근 2년 영업이익 (단위: 억원)</label>
+                                     <input type="number" id="profit-y2" name="profit-y2" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                 </div>
+                                  <div>
+                                     <label for="profit-y3" class="block text-sm font-medium text-gray-700 mb-1">최근 3년 영업이익 (단위: 억원)</label>
+                                     <input type="number" id="profit-y3" name="profit-y3" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                 </div>
+                                   <div>
+                                     <label for="debt-ratio" class="block text-sm font-medium text-gray-700 mb-1">현재 부채 비율 (%)</label>
+                                     <input type="number" id="debt-ratio" name="debt-ratio" step="0.1" required class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
+                                 </div>
+                             </div>
+                              <div class="mt-6">
+                                <label for="financial-plan" class="block text-sm font-medium text-gray-700 mb-1">향후 3년 재무 계획 요약</label>
+                                <textarea id="financial-plan" name="financial-plan" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+                             </div>
+                         </fieldset>
+
+                         <fieldset>
+                              <legend class="text-lg font-semibold text-gray-900 mb-4">첨부 자료</legend>
+                              <div class="space-y-4">
+                                <div>
+                                    <label for="file-ir" class="block text-sm font-medium text-gray-700 mb-1">IR 덱 (PDF, 20MB 이하)</label>
+                                    <input type="file" id="file-ir" name="file-ir" accept=".pdf" required class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-brand-blue hover:file:bg-blue-100">
+                                </div>
+                                <div>
+                                    <label for="file-financials" class="block text-sm font-medium text-gray-700 mb-1">재무제표 (최근 3년, PDF, 10MB 이하)</label>
+                                    <input type="file" id="file-financials" name="file-financials" accept=".pdf" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-brand-blue hover:file:bg-blue-100">
+                                </div>
+                                <div>
+                                    <label for="file-tech-intro" class="block text-sm font-medium text-gray-700 mb-1">기술 소개 자료 (PDF, 10MB 이하)</label>
+                                    <input type="file" id="file-tech-intro" name="file-tech-intro" accept=".pdf" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-brand-blue hover:file:bg-blue-100">
+                                </div>
+                                 <div>
+                                    <label for="file-funding-plan" class="block text-sm font-medium text-gray-700 mb-1">자금 활용 계획서 (PDF, 10MB 이하)</label>
+                                    <input type="file" id="file-funding-plan" name="file-funding-plan" accept=".pdf" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-brand-blue hover:file:bg-blue-100">
+                                </div>
+                              </div>
+                         </fieldset>
+
+                         <fieldset>
+                              <legend class="text-lg font-semibold text-gray-900 mb-4">참여 확인 및 동의</legend>
+                              <div class="space-y-3">
+                                 <label class="flex items-start space-x-2">
+                                     <input type="checkbox" name="consent-info" value="agreed" required class="mt-1 rounded border-gray-300">
+                                     <span class="text-sm text-gray-700">제출된 정보의 정확성을 확인하며, 개인정보 수집 및 이용에 동의합니다. <a href="privacy.html-policy" class="text-brand-blue hover:underline">(개인정보처리방침 보기)</a></span>
+                                 </label>
+                                  <label class="flex items-start space-x-2">
+                                     <input type="checkbox" name="consent-program" value="agreed" required class="mt-1 rounded border-gray-300">
+                                     <span class="text-sm text-gray-700">선정될 경우, AI 골드 러쉬 파트너스의 후속 지원 및 빌드업 프로그램 참여에 동의합니다.</span>
+                                 </label>
+                                 <label class="flex items-start space-x-2">
+                                     <input type="checkbox" name="consent-evaluation" value="agreed" required class="mt-1 rounded border-gray-300">
+                                     <span class="text-sm text-gray-700">한국인공지능협회의 투자 적합성 평가 진행에 동의합니다.</span>
+                                 </label>
+                              </div>
+                         </fieldset>
+
+                         <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 text-lg">
+                             신청서 최종 제출
+                         </button>
+                     </form>
+                 </section>
+             </div>
+         </div>
+    </main>
+
+    <!-- Footer (동일하게 유지) -->
+    <!-- Footer (동일하게 유지) -->
+    <footer class="bg-gray-800 text-gray-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                 <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">AI Gold Rush Partners</h4>
+                    <p class="text-sm">한국인공지능협회와 피앤에프글로벌이 함께하는 AI 기업 전문 투자 파트너입니다.</p>
+                    <div class="mt-4 space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">바로가기</h4>
+                     <ul class="space-y-2 text-sm">
+                         <li><a href="about.html" class="hover:text-white">프로그램 소개</a></li>
+                         <li><a href="criteria.html" class="hover:text-white">투자 구조</a></li>
+                         <li><a href="partnership.html" class="hover:text-white">파트너십</a></li>
+                         <li><a href="criteria.html" class="hover:text-white">투자 기준</a></li>
+                         <li><a href="cases.html" class="hover:text-white">성공 사례</a></li>
+                         <li><a href="apply.html" class="hover:text-white">투자 신청</a></li>
+                         <li><a href="members.html" class="hover:text-white">회원사 전용</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">연락처</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> 서울특별시 강남구 테헤란로 </li>
+                        <li><i class="fas fa-phone-alt mr-2"></i> (02) 123-4567 </li>
+                        <li><i class="fas fa-envelope mr-2"></i> contact@aigoldrush.kr </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm">
+                 <p>© 2024 AI Gold Rush Partners (Korea AI Association & P&F Global). All Rights Reserved.</p>
+                 <div class="mt-2 space-x-4">
+                     <a href="privacy.html" class="hover:text-white">개인정보처리방침</a>
+                     <a href="terms.html" class="hover:text-white">이용약관</a>
+                 </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Basic JS for Step Control (Needs refinement for production) -->
+    <script>
+        const memberCheckSection = document.getElementById('member-check-section');
+        const fundingTypeSection = document.getElementById('funding-type-selection');
+        const applicationFormSection = document.getElementById('application-form-section');
+
+        const confirmMembershipBtn = document.getElementById('confirm-membership-btn');
+        const proceedToFormBtn = document.getElementById('proceed-to-form-btn');
+        const fundingTypeCards = document.querySelectorAll('.funding-type-card');
+        const fundingDetailSections = document.querySelectorAll('.funding-details');
+
+        let selectedFundingTypes = [];
+
+        // --- Step 1: Member Check ---
+        confirmMembershipBtn.addEventListener('click', () => {
+            // ** TODO: Add actual membership validation logic here (e.g., AJAX call to backend) **
+            // Simulate successful validation for now
+            const isMember = true; // Replace with actual validation result
+            const memberCheckError = document.getElementById('member-check-error');
+
+            if (isMember) {
+                memberCheckSection.style.display = 'none';
+                fundingTypeSection.style.display = 'block';
+                memberCheckError.style.display = 'none';
+
+                // Pre-fill form fields from check step (optional)
+                 document.getElementById('biz-reg-num').value = document.getElementById('biz-reg-num-check').value;
+                 document.getElementById('contact-email').value = document.getElementById('contact-email-check').value;
+                 document.getElementById('company-name').value = document.getElementById('company-name-check').value;
+
+
+            } else {
+                memberCheckError.style.display = 'block';
+            }
+        });
+
+        // --- Step 2: Funding Type Selection ---
+        fundingTypeCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const type = card.dataset.type;
+                const isCombined = type === 'combined';
+                const isSelected = card.classList.contains('selected');
+
+                if (isCombined) {
+                    // If "Combined" is selected, deselect it if clicked again
+                    if (isSelected) {
+                        card.classList.remove('selected');
+                    } else {
+                       // Allow selecting "Combined" along with others, or by itself.
+                       // If selecting Combined, ensure others can be selected too.
+                       // If deselecting Combined, it doesn't affect others.
+                       card.classList.add('selected'); // Simply mark combined as selected
+                    }
+                } else {
+                    // For regular types, toggle selection
+                    if (isSelected) {
+                        card.classList.remove('selected');
+                    } else {
+                        card.classList.add('selected');
+                         // Deselect 'Combined' if a specific type is chosen after 'Combined'
+                        document.querySelector('.funding-type-card[data-type="combined"]').classList.remove('selected');
+                    }
+                }
+
+                // Update selected types array
+                selectedFundingTypes = [];
+                document.querySelectorAll('.funding-type-card.selected').forEach(selectedCard => {
+                    if (selectedCard.dataset.type !== 'combined') { // Exclude 'combined' itself from the list
+                       selectedFundingTypes.push(selectedCard.dataset.type);
+                    }
+                });
+
+                 // Enable proceed button only if at least one type is selected
+                proceedToFormBtn.disabled = document.querySelectorAll('.funding-type-card.selected').length === 0;
+            });
+        });
+
+         // --- Step 3: Proceed to Form ---
+        proceedToFormBtn.addEventListener('click', () => {
+            fundingTypeSection.style.display = 'none';
+            applicationFormSection.style.display = 'block';
+
+            // Show relevant detail sections based on selection
+            fundingDetailSections.forEach(section => {
+                section.classList.remove('active'); // Hide all first
+            });
+
+            selectedFundingTypes.forEach(type => {
+                const detailSection = document.getElementById(`funding-details-${type}`);
+                if (detailSection) {
+                    detailSection.classList.add('active');
+                }
+            });
+
+             // If only 'Combined' was selected, maybe show all? Or prompt user again?
+             // For now, if combined was selected, we rely on the `selectedFundingTypes` array which excludes 'combined'.
+             // If 'combined' is selected ALONE, nothing will show yet. Needs better logic for 'combined'.
+              // Example: If 'combined' is selected and `selectedFundingTypes` is empty, show all.
+             const combinedCard = document.querySelector('.funding-type-card[data-type="combined"]');
+             if (combinedCard.classList.contains('selected') && selectedFundingTypes.length === 0) {
+                 // Maybe show a message or enable all sections? Showing all for simplicity here.
+                 fundingDetailSections.forEach(section => section.classList.add('active'));
+             }
+
+
+             // Scroll to the form section
+             applicationFormSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+         // --- Simple dependent dropdown logic (example) ---
+         const techField = document.getElementById('tech-field');
+         const techDetail = document.getElementById('tech-detail');
+         const techDetailOptions = Array.from(techDetail.querySelectorAll('optgroup'));
+
+         techField.addEventListener('change', () => {
+             const selectedField = techField.value;
+             // Hide all optgroups first
+             techDetailOptions.forEach(optgroup => optgroup.style.display = 'none');
+             techDetail.value = ""; // Reset selection
+
+             // Show the relevant optgroup
+             const relevantOptgroup = techDetail.querySelector(`optgroup[label="${selectedField.toUpperCase()}"]`)
+                                      || techDetail.querySelector(`optgroup[label="${techField.options[techField.selectedIndex].text}"]`); // Match label text
+             if (relevantOptgroup) {
+                 relevantOptgroup.style.display = 'block';
+             }
+         });
+          // Initially hide all optgroups except the placeholder
+         techDetailOptions.forEach(optgroup => optgroup.style.display = 'none');
+
+
+        // TODO: Add more JS for file validation, 'other' input fields, etc.
+    </script>
+
+</body>
+</html>
